@@ -1,0 +1,64 @@
+#page-homepage {
+    color: #212121;
+    background-color: #cfcfcf;
+
+    #hero {
+        color: white;
+        background-color: lightblue;
+        background: url("../images/homepage-hero-1920x1280.jpg") rgba(0,0,0,.4);
+        background-blend-mode: multiply;
+        background-position: center bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+        // background-attachment: fixed;
+        padding: 24px;
+        @media only screen and (max-width: 420px) {
+            // padding: 80px 24px;
+        }
+        h1, h2 { max-width: 600px; }
+        h1 { text-shadow: 4px 6px #111111; }
+        h2 { text-shadow: 2px 2px #111111; }
+        a:hover { text-decoration: underline; }
+    }
+
+    #intro { padding-top: 80px !important; }
+
+    #break {
+        background-color: lightblue;
+        background: url("../images/break-1920x1280.jpg") rgba(0,0,0,.2);
+        background-blend-mode: multiply;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    #register {
+        padding: 80px 0;
+        #register-component {
+            input { 
+                width: 100%; 
+                font-size: 1.2em;
+                margin-bottom: 11px;
+                border-radius: 8px;
+                padding: 6px;
+            }
+        }
+    }
+
+} // end #page-homepage
+
+#page-login {
+    padding: 80px 0;
+    #login {
+        #login-component {
+            input {
+                width: 100%;
+                font-size: 1.2em;
+                margin-bottom: 12px;
+                border-radius: 8px;
+                padding: 8px;
+            }
+        }
+    }
+} // end #page-login

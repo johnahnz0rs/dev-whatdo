@@ -1,0 +1,77 @@
+
+@font-face {
+    font-family: 'BigJohn';
+    src: url('../fonts/bigjohn.otf') format('opentype');
+}
+@font-face {
+    font-family: 'SlimJoe';
+    src: url('../fonts/slimjoe.otf') format('opentype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+
+    // fonts
+    color: #131313;
+    font-family: Arial, Helvetica, sans-serif;
+    .font-big-john { font-family: 'BigJohn', Arial, sans-serif; }
+    .font-slim-joe { font-family: 'SlimJoe', Arial, sans-serif; }
+
+    // custom dimensions
+    .stack-page { 
+        padding: 0;
+        margin: 0;
+    }
+    .full-height { 
+        min-height: 91vh; 
+    }
+    .full-width { 
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    // header
+    #stackin-header-nav {
+        font-weight: bold;
+        text-transform: capitalize;
+        li {
+            margin-left: 2em;
+            padding-top: 8px;
+        }
+        z-index: 4000;
+    }
+
+    // dashboard & components within
+    #page-dash {
+        #reminders, #wins, #food, #vices, #whatdo {
+            padding-top: 160px;
+            padding-bottom: 120px;
+        }
+    }
+    
+    // footer
+    #stackin-footer-nav {
+        padding: 24px;
+        background-color: black;
+        color: white;
+        p {
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+}
+
+// import partials
+@import 'homepage'; // - styles for the homepage/landing page
+// @import 'dash'; // - this file was 6 lines, so i just copy-pasted it here #page-dash 2020-12-19

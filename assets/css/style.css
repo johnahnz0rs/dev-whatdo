@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'BigJohn';
+  src: url("../fonts/bigjohn.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'SlimJoe';
+  src: url("../fonts/slimjoe.otf") format("opentype"); }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #131313;
+  font-family: Arial, Helvetica, sans-serif; }
+  body .font-big-john {
+    font-family: 'BigJohn', Arial, sans-serif; }
+  body .font-slim-joe {
+    font-family: 'SlimJoe', Arial, sans-serif; }
+  body .stack-page {
+    padding: 0;
+    margin: 0; }
+  body .full-height {
+    min-height: 91vh; }
+  body .full-width {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0; }
+  body #stackin-header-nav {
+    font-weight: bold;
+    text-transform: capitalize;
+    z-index: 4000; }
+    body #stackin-header-nav li {
+      margin-left: 2em;
+      padding-top: 8px; }
+  body #page-dash #reminders, body #page-dash #wins, body #page-dash #food, body #page-dash #vices, body #page-dash #whatdo {
+    padding-top: 160px;
+    padding-bottom: 120px; }
+  body #stackin-footer-nav {
+    padding: 24px;
+    background-color: black;
+    color: white; }
+    body #stackin-footer-nav p {
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 1.2em; }
+    body #stackin-footer-nav a {
+      color: white;
+      text-decoration: none; }
+
+#page-homepage {
+  color: #212121;
+  background-color: #cfcfcf; }
+  #page-homepage #hero {
+    color: white;
+    background-color: lightblue;
+    background: url("../images/homepage-hero-1920x1280.jpg") rgba(0, 0, 0, 0.4);
+    background-blend-mode: multiply;
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 24px; }
+    #page-homepage #hero h1, #page-homepage #hero h2 {
+      max-width: 600px; }
+    #page-homepage #hero h1 {
+      text-shadow: 4px 6px #111111; }
+    #page-homepage #hero h2 {
+      text-shadow: 2px 2px #111111; }
+    #page-homepage #hero a:hover {
+      text-decoration: underline; }
+  #page-homepage #intro {
+    padding-top: 80px !important; }
+  #page-homepage #break {
+    background-color: lightblue;
+    background: url("../images/break-1920x1280.jpg") rgba(0, 0, 0, 0.2);
+    background-blend-mode: multiply;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; }
+  #page-homepage #register {
+    padding: 80px 0; }
+    #page-homepage #register #register-component input {
+      width: 100%;
+      font-size: 1.2em;
+      margin-bottom: 11px;
+      border-radius: 8px;
+      padding: 6px; }
+
+#page-login {
+  padding: 80px 0; }
+  #page-login #login #login-component input {
+    width: 100%;
+    font-size: 1.2em;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    padding: 8px; }
+/*# sourceMappingURL=style.css.map */
