@@ -26,7 +26,7 @@
                 echo '<div class="col">';
                     echo '<i class="far fa-square fa-lg stack-this-win" data-id="' . $win['id'] .'"></i>';
                 echo '</div>';
-                echo '<div class="col-9">';
+                echo '<div class="col-11">';
                     echo '<h3>' . $win['title'] . '</h3>';
                     echo '<p id="winnote-' . $win['id'] . '" class="win-note">' . $win['note'] . '</p>';
                     echo '<small class="toggle-win-note" data-id="' . $win['id'] . '"> show / hide note </small>';
@@ -38,10 +38,10 @@
                         echo '</form>';
                     echo '</div>';
                 echo '</div>';
-                echo '<div class="col d-flex flex-column align-items-end">';
-                    echo '<i class="edit-this-win fas fa-pen" data-id="' . $win['id'] . '"></i><br>';
-                    echo '<i class="delete-this-win far fa-trash-alt" data-id="' . $win['id'] . '"></i>';
-                echo '</div>';
+                // echo '<div class="col d-flex flex-column align-items-end">';
+                //     echo '<i class="edit-this-win fas fa-pen" data-id="' . $win['id'] . '"></i><br>';
+                //     echo '<i class="delete-this-win far fa-trash-alt" data-id="' . $win['id'] . '"></i>';
+                // echo '</div>';
             echo '</div>';
         echo '</div>';
         echo '<div class="col col-md-1 col-lg-3 d-none d-md-inline">&nbsp;</div>';

@@ -37,6 +37,8 @@ body {
   body #page-dash #reminders, body #page-dash #wins, body #page-dash #food, body #page-dash #vices, body #page-dash #whatdo {
     padding-top: 160px;
     padding-bottom: 120px; }
+  body #page-dash #food #component-food #total-macros {
+    z-index: 2000; }
   body #stackin-footer-nav {
     padding: 24px;
     background-color: black;

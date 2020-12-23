@@ -242,7 +242,7 @@ $recipes = array(
 );
 
 $platesSides = '1 can mixed vegetables, 1/2 cup steamed white rice, 1/2 cup mac and cheese (from a box), 1/2 cup mashed potatoes, 1/2 cup mashed sweet potatoes, 1/2 cup creamed corn, 1/2 cup creamed spinach, 1/2 cup refried beans, 1/2 cup black beans, 4 oz broccoli, 3/4 cup asparagus';
-
+$listOfMeals = [ "1" => "Meal 1", "2" => "Meal 2", "3" => "Meal 3", "4" => "Meal 4", "5" => "Meal 5" ];
 
 
 

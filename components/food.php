@@ -1,5 +1,5 @@
 <?php
-// require './recipes.php';
+// require './recipes.php'; // i call this file at the top of /dash/index.php
 
 ?>
 <!-- custom styles -->
@@ -35,17 +35,16 @@
 
     <div class="accordion" id="accordion-meal-planner">
 
-        <?php 
-            $listOfMeals = [ "1" => "Meal 1", "2" => "Meal 2", "3" => "Meal 3", "4" => "Meal 4", "5" => "Meal 5" ];
-        
+        <?php        
             foreach( $listOfMeals as $i=>$meal ) {
 
                 echo '<div id="accordion-meal-' . $i . '" class="accordion-item">';
                     echo '<h3 class="accordion-header" id="heading-' . $i . '">';
-                        echo '<button class="accordion-button fs-2';
+                        echo '<button class="accordion-button fs-3';
                         echo $i != "1" ? ' collapsed' : '' ;
                         echo '" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' . $i . '" aria-expanded="true" aria-controls="collapse' . $i . '">';
-                            echo '<i id="checkbox-meal-' . $i . '" class="far fa-square"></i> ' . $meal;
+                            echo '<i id="checkbox-meal-' . $i . '" class="far fa-square"></i> <strong>' . $meal . '</strong>';
+                            echo ' <span id="accordion-header-meal-' . $i . '" class="fs-5"></span>';
                         echo '</button>';
                     echo '</h3>';
                     echo '<div id="collapse-' . $i . '" class="accordion-collapse collapse';
@@ -173,7 +172,9 @@ $( document ).ready( function() {
             const thisIsTheSelectedRecipe = recipes[selectedRecipe];
             // update checkbox
             $( '#checkbox-meal-' + meal ).removeClass( 'fa-square' ).addClass( 'fa-check-square' );
-            // update meal name
+            // update meal name in accordion header
+            $( '#accordion-header-meal-' + meal ).text( thisIsTheSelectedRecipe['name'] );
+            // update meal name in accordion body
             $( '#selected-meal-name-' + meal ).text( thisIsTheSelectedRecipe['name'] );
             // update meal ingredients
             let ingredientsString = '';
@@ -197,6 +198,8 @@ $( document ).ready( function() {
         } else {
             // update checkbox
             $( '#checkbox-meal-' + meal ).removeClass( 'fa-check-square' ).addClass( 'fa-square' );
+            // update meal name in accordion header
+            $( '#accordion-header-meal-' + meal ).text( '' );
             // update meal name
             $( '#selected-meal-name-' + meal ).text( '' );
             // update meal ingredients
@@ -217,3 +220,12 @@ $( document ).ready( function() {
 
 } );
 </script>
+name-' + meal ).text( '' );
+            // update meal ingredients
+            $( '#selected-meal-ingredients' + meal ).text( '' );
+            // update meal calories
+            $( '#selected-meal-calories-' + meal ).text( '' );
+            // update meal protein
+            $( '#selected-meal-protein-' + meal ).text( '' );
+            // update meal fats
+            $( '#selected-meal-fats-' + meal ).text( '' );

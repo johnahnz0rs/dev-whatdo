@@ -31,29 +31,10 @@ if( $addWins or $addVices ) {
 }
 // get user's reminders
 $reminders = getUsersReminders( $userId );
-// $remindersUnsorted = getUsersReminders( $userId );
-// $reminders = [
-//     'vision' => [],
-//     'pains' => [],
-//     'personal' => []
-// ];
-// foreach( $remindersUnsorted as $reminder ) {
-//     switch( $reminder['type'] ) {
-//         case 'vision':
-//             $reminders['vision'][] = $reminder;
-//             break;
-//         case 'pains':
-//             $reminders['pains'][] = $reminder;
-//             break;
-//         case 'personal':
-//             $reminders['personal'][] = $reminder;
-//             break;
-//     }
-// }
-
-// get meal plan
+// get meal plan -- this is actually handled by /components/recipes.php and js in /components/food.php
 // get whatDo
-
+$whatDos = getUsersWhatDos( $userId );
+$whatDones = getUsersWhatDones( $wins, $whatDos );
 
 
 /* start HTML output */
@@ -73,17 +54,12 @@ require '../components/header.php'; // initiates the html output (starting w/ <h
     <div id="wins" class="full-height">
         <h2 class="full-width text-center mb-5">Daily Wins</h2>
         <?php require '../components/wins.php'; ?>
-        
-            
     </div>
 
     <!-- meal plan -->
     <div id="food" class="text-secondary bg-info full-height">
         <h2 class="full-width text-center">Meal Plan</h2>
         <?php require '../components/food.php'; ?>
-        <!-- <div style="height: 120px; background-color: lightgray;" class="m-3 p-3">this is a meal</div>
-        <div style="height: 120px; background-color: lightgray;" class="m-3 p-3">this is a meal</div>
-        <div style="height: 120px; background-color: lightgray;" class="m-3 p-3">this is a meal</div> -->
     </div>
 
     <!-- vices -->
@@ -94,12 +70,8 @@ require '../components/header.php'; // initiates the html output (starting w/ <h
 
     <!-- whatDo -->
     <div id="whatdo" class="text-light bg-dark">
-        <div class="container-md">
-            <h2 class="full-width text-center">whatDo</h2>
-            <div style="height: 120px; background-color: lightgray;" class="m-3 p-3">this is a whatDo</div>
-            <div style="height: 120px; background-color: lightgray;" class="m-3 p-3">this is a whatDo</div>
-            <div style="height: 120px; background-color: lightgray;" class="m-3 p-3">this is a whatDo</div>
-        </div>
+        <h2 class="full-width text-center">whatDo</h2>
+        <?php require '../components/whatdo.php'; ?>
     </div>
     
 </div>

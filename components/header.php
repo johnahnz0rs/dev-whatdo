@@ -23,7 +23,7 @@ $request_uri = strpos( $request_uri, '/dash');
     <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
 
     <!-- fontawesome -->
-    <script src="https://kit.fontawesome.com/d7baaf610f.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/d7baaf610f.js" crossorigin="anonymous"></script> -->
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- jquery -->

@@ -50,7 +50,7 @@ function getUsersProgram( $userId ) {
 // get user's wins for $date
 function getUsersWins( $userId, $date ) {
     global $db;
-    $sqlWins = $db->prepare( "SELECT id, program_id, whatdo_id, title, note, stacked FROM wins WHERE user_id = :userId and date = :date" );
+    $sqlWins = $db->prepare( "SELECT id, program_id, whatdo_id, title, note, user_note, stacked FROM wins WHERE user_id = :userId and date = :date" );
     try {
         $sqlWins->execute( [
             'userId' => $userId,
@@ -103,7 +103,7 @@ function addWinsAsNecessary( $userId, $program, $wins, $date ) {
     return count( $winsToAdd ) ? true : false;
 }
 
-// get user's vices
+// get user's vices (array of vices)
 function getUsersVices( $userId ) {
     // get user's vices
     global $db;
@@ -121,10 +121,10 @@ function getUsersVices( $userId ) {
     return $vices;
 }
 
-// get user's viceCounts for $date
+// get user's viceCounts for $date (array of viceCounts)
 function getUsersViceCounts( $userId, $date ) {
     global $db;
-    $sqlViceCounts = $db->prepare( "SELECT id, vice_id, title, note, count FROM vice_counts WHERE user_id = :userId and date = :date" );
+    $sqlViceCounts = $db->prepare( "SELECT id, vice_id, title, note, user_note, count FROM vice_counts WHERE user_id = :userId and date = :date" );
     try {
         $sqlViceCounts->execute( [
             'userId' => $userId,
@@ -139,7 +139,7 @@ function getUsersViceCounts( $userId, $date ) {
     return $viceCounts;
 }
 
-// if vices are missing from today's viceCounts, then add them.
+// if vices are missing from today's viceCounts, then add them (adds vices and returns true/false)
 function addViceCountsAsNecessary( $userId, $vices, $viceCounts, $date ) {
     global $db;
     // vice_id's of user's existing viceCounts
@@ -176,4 +176,36 @@ function addViceCountsAsNecessary( $userId, $vices, $viceCounts, $date ) {
     }
 
     return count( $vicesToAdd ) ? true : false;
+}
+
+// get user's whatdos (array)
+function getUsersWhatDos( $userId ) {
+    global $db;
+    $sqlWhatDos = $db->prepare( 'SELECT id, title, created_at FROM whatdos WHERE user_id = :userId and active = 1' );
+    try {
+        $sqlWhatDos->execute( [
+            'userId' => $userId
+        ] );
+    } catch( PDOException $e ) {
+        $output = $e->getMessage();
+        echo $output;
+        die();
+    }
+    $whatDos = $sqlWhatDos->rowCount() ? $sqlWhatDos->fetchAll( PDO::FETCH_ASSOC ) : null;
+    return $whatDos;
+}
+
+// get an array of id's of whatdos that are marked as STACKED wins
+function getUsersWhatDones( $wins, $whatDos ) {
+    $whatDosIds = [];
+    foreach( $whatDos as $whatDo ) {
+        $whatDosIds[] = $whatDo['id'];
+    }
+    $whatDones = [];
+    foreach( $wins as $win ) {
+        if( $win['whatdo_id'] != 0 ) {
+            $whatDones[] = $win['whatdo_id'];
+        }
+    }
+    return count( $whatDones ) ? $whatDones : null;
 }

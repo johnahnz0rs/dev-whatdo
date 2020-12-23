@@ -52,6 +52,10 @@ body {
             padding-top: 160px;
             padding-bottom: 120px;
         }
+
+        #food #component-food #total-macros {
+            z-index: 2000;
+        }
     }
     
     // footer
