@@ -1,10 +1,9 @@
 <?php
 // require './recipes.php'; // i call this file at the top of /dash/index.php
-
 ?>
 
 
-<div id="component-food" class="">
+<div id="component-food">
 
     <div id="total-macros" class="sticky-top bg-warning">
         <div class="text-center">

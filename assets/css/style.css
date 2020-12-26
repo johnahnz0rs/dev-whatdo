@@ -130,6 +130,29 @@ body {
     padding-right: 6px; }
   body #page-dash #food .accordion .recipe-select {
     max-width: 100%; }
+  body #page-dash #vices .single-vice {
+    width: 400px;
+    margin: 10px 0; }
+    body #page-dash #vices .single-vice .manipulate-count {
+      font-size: 1.5em;
+      line-height: 0.9em; }
+    body #page-dash #vices .single-vice .toggle-vice-note {
+      margin-right: 8px; }
+    body #page-dash #vices .single-vice .vice-note {
+      display: none;
+      margin-bottom: 0;
+      font-style: italic;
+      font-size: 0.85em; }
+      body #page-dash #vices .single-vice .vice-note p {
+        text-align: justify;
+        margin: 4px 2% 0px 12%; }
+    body #page-dash #vices .single-vice .toggle-add-detail-to-vice {
+      font-style: italic;
+      font-size: 0.6em; }
+    body #page-dash #vices .single-vice .toggle-add-detail-to-vice:hover, body #page-dash #vices .single-vice .toggle-add-vice-user-note:hover, body #page-dash #vices .single-vice i:hover {
+      cursor: pointer; }
+    body #page-dash #vices .single-vice textarea {
+      width: 100%; }
   body #stackin-footer-nav {
     padding: 24px;
     color: white; }
