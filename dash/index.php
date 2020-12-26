@@ -20,20 +20,14 @@ $date = isset( $_GET['date'] ) ? $_GET['date'] : null;
 $dates = getArrayOfDateStringsForYesterdayTodayTomorrow( $date );
 // get user's daily program and wins
 $program = getUsersProgram( $userId );
-$wins = getUsersWins( $userId, $date );
-$addWins = addWinsAsNecessary( $userId, $program, $wins, $date );
+$wins = getUsersWins( $userId, $dates['today'] );
+$addWins = addWinsAsNecessary( $userId, $program, $wins, $dates['today'] );
 // get user's vices and viceCounts
 $vices = getUsersVices( $userId );
-$viceCounts = getUsersViceCounts( $userId, $date );
-$addVices = addViceCountsAsNecessary( $userId, $vices, $viceCounts, $date );
+$viceCounts = getUsersViceCounts( $userId, $dates['today'] );
+$addVices = addViceCountsAsNecessary( $userId, $vices, $viceCounts, $dates['today'] );
 if( $addWins or $addVices ) { 
     $headerString = 'Location: /dash/?date=' . $dates['today'];
-    // echo '<pre>';
-    // var_dump( $addWins );
-    // echo '</pre>';
-    // echo '<pre>';
-    // var_dump( $addVices );
-    // echo '</pre>';
     header( $headerString );
     die();
 }

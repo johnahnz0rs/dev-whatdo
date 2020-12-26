@@ -58,7 +58,7 @@
                         <div id="add-detail-vice-' . $vice['id'] . '" class="w-100" style="display: none;">
                             <form action="../app/vices/post-update-vice-usernote.php" method="POST">
                                 <input name="user_id" type="hidden" value="' . $userId . '">
-                                <input name="id" type="hidden" value="' . $win['id'] . '">
+                                <input name="id" type="hidden" value="' . $vice['id'] . '">
                                 <input name="date" type="hidden" value="' . $dates['today'] . '">
                                 <textarea name="user_note">' . $vice['user_note'] . '</textarea>
                                 <input type="submit" class="btn btn-sm btn-primary" value="Submit">

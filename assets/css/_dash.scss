@@ -91,6 +91,39 @@
     }
 
     #vices {
+        .single-vice {
+            width: 400px;
+            margin: 10px 0;
+            .manipulate-count {
+                font-size: 1.5em;
+                line-height: 0.9em;
+            }
+            .toggle-vice-note {
+                margin-right: 8px;
+            }
+            .vice-note {
+                display: none;
+                margin-bottom: 0;
+                font-style: italic;
+                font-size: 0.85em;
+                p {
+                    text-align: justify;
+                    margin: 4px 2% 0px 12%;
+                }
+            }
+            .toggle-add-detail-to-vice {
+                font-style: italic;
+                font-size: 0.6em;
+            }
+            .toggle-add-detail-to-vice, .toggle-add-vice-user-note, i {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            textarea {
+                width: 100%;
+            }
+        }
         // .vice-note {
         //     display: none;
         //     margin-bottom: 0;
