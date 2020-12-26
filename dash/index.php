@@ -24,8 +24,22 @@ $wins = getUsersWins( $userId, $dates['today'] );
 $addWins = addWinsAsNecessary( $userId, $program, $wins, $dates['today'] );
 // get user's vices and viceCounts
 $vices = getUsersVices( $userId );
+// echo 'got vices!<br><pre>';
+// var_dump($vices);
+// echo '</pre>';
+// echo 'datesToday: ' . $dates['today'] . ' (' . gettype($dates['today']) . ')<br>';
+// die();
 $viceCounts = getUsersViceCounts( $userId, $dates['today'] );
+// echo 'got viceCounts!<br><pre>';
+// var_dump($viceCounts);
+// echo '</pre>';
+// die();
 $addVices = addViceCountsAsNecessary( $userId, $vices, $viceCounts, $dates['today'] );
+
+// echo 'got addVices<br><pre>';
+// var_dump($addVices);
+// echo '</pre>';
+// die();
 if( $addWins or $addVices ) { 
     $headerString = 'Location: /dash/?date=' . $dates['today'];
     header( $headerString );
@@ -139,6 +153,58 @@ $( document ).ready( function() {
         $totalFats.text(fats);
         $totalCarbs.text(carbs);
     }
+    function updateViceCount( id, count ) {
+        const date = '<?php echo $dates['today']; ?>';
+        const userId = '<?php echo $userId; ?>';
+        const updateString = '../app/vices/update-vice-count.php?id=' + id + '&user_id=' + userId + '&count=' + count + '&date=' + date;
+        window.location.href = updateString;
+    }
+    // // from v1
+    // function stackWin(winId) {
+    //     // set vars
+    //     var targetElement = '#' + winId + ' .win-checkmark';
+    //     var stackURL = '../app/stack-win.php?id=' + winId;
+    //     var newCheckmark = '<i class="far fa-check-square fa-lg win-stacked" onclick="unstackWin(' + winId + ')"></i>';
+    //     var stackCount = parseInt( $('#stack-count').text() );
+
+    //     // call the update script and update .win-checkmark
+    //     var xhttp = new XMLHttpRequest();
+    //     xhttp.onreadystatechange = function() {
+    //         if( this.readyState == 4 && this.status == 200 ) {
+    //             if (this.responseText == 1) {
+    //                 $(targetElement).html(newCheckmark);
+    //                 stackCount += 1;
+    //                 $('#stack-count').text(stackCount);
+    //             }
+    //         }
+    //     }
+    //     xhttp.open('GET',stackURL);
+    //     xhttp.send();
+    // }
+    // // from v1 
+    // function unstackWin(winId) {
+    //     // set vars
+    //     var targetElement = '#' + winId + ' .win-checkmark';
+    //     var unstackURL = '../app/unstack-win.php?id=' + winId;
+    //     var newCheckmark = '<i class="far fa-square fa-lg win-not-stacked" onclick="stackWin(' + winId + ')"></i>';
+    //     var stackCount = parseInt( $('#stack-count').text() );
+
+    //     // call the update script and update .win-checkmark
+    //     var xhttp = new XMLHttpRequest();
+    //     xhttp.onreadystatechange = function() {
+    //         if( this.readyState == 4 && this.status == 200 ) {
+    //             if (this.responseText == 1) {
+    //                 $(targetElement).html(newCheckmark);
+    //                 if (stackCount > 0) {
+    //                     stackCount -= 1;
+    //                 }
+    //                 $('#stack-count').text(stackCount);
+    //             }
+    //         }
+    //     }
+    //     xhttp.open('GET',unstackURL);
+    //     xhttp.send();
+    // }
 
 
 
@@ -196,8 +262,6 @@ $( document ).ready( function() {
         const thisIsTheSelectedRecipe = selectedRecipe ? recipes[selectedRecipe] : null;
         const thisIsTheSelectedRecipeName = thisIsTheSelectedRecipe ? thisIsTheSelectedRecipe['name'] : '';
         $( '#accordion-header-meal-' + meal ).text( thisIsTheSelectedRecipeName );
-        // update meal name in accordion body
-        // $( '#selected-meal-name-' + meal ).text( thisIsTheSelectedRecipeName );
         
         // update meal ingredients 
         let ingredientsString = '';
@@ -219,10 +283,6 @@ $( document ).ready( function() {
         const mealFats = thisIsTheSelectedRecipe ? thisIsTheSelectedRecipe['fats'] : '0';
         const mealCarbs = thisIsTheSelectedRecipe ? thisIsTheSelectedRecipe['carbs'] : '0';
         const mealCalories = thisIsTheSelectedRecipe ? ( thisIsTheSelectedRecipe['protein'] * 4 ) + ( thisIsTheSelectedRecipe['fats'] * 9 ) + ( thisIsTheSelectedRecipe['carbs'] * 4 ) : '0';
-        // console.log( 'mealProtein ' . mealProtein);
-        // console.log( 'mealFats ' . mealFats);
-        // console.log( 'mealCarbs ' . mealCarbs);
-        // console.log( 'mealCalories ' . mealCalories);
         $( '#selected-meal-protein-' + meal ).text( mealProtein );
         $( '#selected-meal-fats-' + meal ).text( mealFats );
         $( '#selected-meal-carbs-' + meal ).text( mealCarbs );
@@ -230,6 +290,35 @@ $( document ).ready( function() {
         calculateTotalCalories();
 
     } );
+
+    
+
+
+    // vices
+    $( '.vice-increment' ).on( 'click', function() {
+        const viceCountId = $( this ).data( 'id' );
+        let viceCountCount = $( this ).data( 'count' );
+        viceCountCount++;
+        updateViceCount( viceCountId, viceCountCount );
+    } );
+    $( '.vice-decrement' ).on( 'click', function() {
+        const viceCountId = $( this ).data( 'id' );
+        let viceCountCount = $( this ).data( 'count' );
+        viceCountCount--;
+        // alert(viceCountCount);
+        updateViceCount( viceCountId, viceCountCount );
+    } );
+    $( '.toggle-vice-note' ).on( 'click', function() {
+        const viceNoteToBeToggled = '#vicenote-' + $( this ).data( 'id' );
+        $( viceNoteToBeToggled ).toggle();
+    } );
+    $( '.toggle-add-vice-user-note' ).on( 'click', function() {
+        const viceUserNoteToBeToggled = '#add-detail-vice-' + $( this ).data( 'id');
+        $( viceUserNoteToBeToggled ).toggle();
+    } );
+
+
+
     // Cookies.set('test_cookie', 'lolomgwtfbbq!?', { expires: 1, path: '/' });
     // const testCookie = Cookies.get( 'test_cookie' );
     // console.log( testCookie );

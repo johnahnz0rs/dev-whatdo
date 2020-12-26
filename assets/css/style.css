@@ -18,9 +18,30 @@ body {
     font-weight: bold;
     text-transform: capitalize;
     z-index: 4000; }
-    body #stackin-header-nav li {
-      margin-left: 2em;
-      padding-top: 8px; }
+    body #stackin-header-nav .navbar-brand img {
+      margin-left: 16px; }
+    @media only screen and (max-width: 420px) {
+      body #stackin-header-nav .navbar {
+        line-height: 0.5;
+        padding-top: 0;
+        padding-bottom: 0; }
+        body #stackin-header-nav .navbar li {
+          margin-left: auto;
+          padding: 0.3em; }
+          body #stackin-header-nav .navbar li a {
+            color: gold; }
+        body #stackin-header-nav .navbar .navbar-brand {
+          padding-top: 0;
+          padding-bottom: 0; }
+          body #stackin-header-nav .navbar .navbar-brand img {
+            height: 30px;
+            width: auto; }
+        body #stackin-header-nav .navbar .navbar-toggler .navbar-toggler-icon {
+          width: 0.9em;
+          height: 0.9em; } }
+    @media only screen and (min-width: 421px) {
+      body #stackin-header-nav .navbar .navbar-nav li {
+        margin-left: 2em; } }
   body #page-homepage {
     color: #212121;
     background-color: #cfcfcf; }
@@ -120,22 +141,38 @@ body {
       width: 100%; }
   body #page-dash #food #total-macros {
     z-index: 2000;
+    top: 171px;
     padding: 12px;
     border: 1px solid black; }
+    body #page-dash #food #total-macros p {
+      margin-bottom: 0.1em; }
     body #page-dash #food #total-macros span {
       font-weight: bold; }
+    @media only screen and (max-width: 420px) {
+      body #page-dash #food #total-macros {
+        top: 145px; } }
   body #page-dash #food .accordion .accordion-button span {
     font-weight: bold; }
   body #page-dash #food .accordion .accordion-item i {
     padding-right: 6px; }
   body #page-dash #food .accordion .recipe-select {
-    max-width: 100%; }
+    width: 95%;
+    padding: 4px;
+    margin-bottom: 12px; }
   body #page-dash #vices .single-vice {
-    width: 400px;
-    margin: 10px 0; }
+    margin: 28px 0;
+    width: 650px; }
+    @media only screen and (max-width: 1025px) {
+      body #page-dash #vices .single-vice {
+        width: 500px; } }
+    @media only screen and (max-width: 420px) {
+      body #page-dash #vices .single-vice {
+        width: 375px; } }
     body #page-dash #vices .single-vice .manipulate-count {
       font-size: 1.5em;
       line-height: 0.9em; }
+    body #page-dash #vices .single-vice h3 span {
+      margin-left: 8px; }
     body #page-dash #vices .single-vice .toggle-vice-note {
       margin-right: 8px; }
     body #page-dash #vices .single-vice .vice-note {
@@ -149,7 +186,13 @@ body {
     body #page-dash #vices .single-vice .toggle-add-detail-to-vice {
       font-style: italic;
       font-size: 0.6em; }
-    body #page-dash #vices .single-vice .toggle-add-detail-to-vice:hover, body #page-dash #vices .single-vice .toggle-add-vice-user-note:hover, body #page-dash #vices .single-vice i:hover {
+    body #page-dash #vices .single-vice .toggle-add-vice-user-note {
+      font-size: 0.63em;
+      font-weight: 300;
+      padding: 0.5em 1em;
+      margin-bottom: 8px;
+      font-style: italic; }
+    body #page-dash #vices .single-vice .toggle-add-vice-user-note:hover, body #page-dash #vices .single-vice i:hover {
       cursor: pointer; }
     body #page-dash #vices .single-vice textarea {
       width: 100%; }

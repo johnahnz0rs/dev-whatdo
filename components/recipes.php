@@ -2,7 +2,7 @@
 
 $recipes = array(
     [
-        'name' => ' -- ',
+        'name' => 'Select a meal for info',
         'protein' => 0,
         'fats' => 0,
         'carbs' => 0,

@@ -7,7 +7,7 @@
 
     <div id="total-macros" class="sticky-top bg-warning">
         <div class="text-center">
-            <p>Total food intake for the day: <span id="total-calories">0</span> cal</p>
+            <p>Total energy intake for the day: <span id="total-calories">0</span> cal</p>
         </div>
         <div class="d-flex justify-content-around">
             <div>&nbsp;</div>
@@ -19,6 +19,9 @@
     </div>
 
     <div class="container py-3">
+        <p class="text-center p-1" style="line-height: 1.2;">
+            <strong><em>These are estimates meant to help you plan your day; use a macro tracker like MyFitnessPal for accuracy.</em></strong>
+        </p>
         <div class="accordion" id="accordion-meal-planner">
 
             <?php        
@@ -36,7 +39,7 @@
                         <div id="collapse-' . $i . '" class="accordion-collapse collapse';
                         echo $i == "1" ? ' show' : '';
                         echo '" aria-labelledby="heading-' . $i . '" data-bs-parent="#accordion-meal-planner">
-                            <div class="accordion-body">
+                            <div class="accordion-body bg-light">
                                 <div class="row">
                                     <div class="col-12 col-md-4">
                                         <form action="">

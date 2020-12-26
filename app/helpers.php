@@ -16,7 +16,7 @@ function getArrayOfDateStringsForYesterdayTodayTomorrow( $date ) {
 // get user's reminders
 function getUsersReminders( $userId ) {
     global $db;
-    $sqlReminders = $db->prepare( "SELECT id, type, title, note FROM reminders WHERE user_id = :userId and active = 1" );
+    $sqlReminders = $db->prepare( "SELECT id, title, note FROM reminders WHERE user_id = :userId and active = 1" );
     try {
         $sqlReminders->execute( [
             'userId' => $userId
@@ -107,7 +107,7 @@ function addWinsAsNecessary( $userId, $program, $wins, $date ) {
 function getUsersVices( $userId ) {
     // get user's vices
     global $db;
-    $sqlVices = $db->prepare( "SELECT id, title, note FROM vices WHERE user_id = :userId and active = 1" );
+    $sqlVices = $db->prepare( "SELECT id, title, note FROM vices WHERE user_id = :userId AND active = 1" );
     try {
         $sqlVices->execute( [
             'userId' => $userId
@@ -124,7 +124,14 @@ function getUsersVices( $userId ) {
 // get user's viceCounts for $date (array of viceCounts)
 function getUsersViceCounts( $userId, $date ) {
     global $db;
-    $sqlViceCounts = $db->prepare( "SELECT id, vice_id, title, note, user_note, count FROM vice_counts WHERE user_id = :userId and date = :date" );
+    // $date = strval($date);
+    // echo 'this is getUsersViceCounts()<br>';
+    // echo $date;
+    // echo '<br>' . $userId;
+    // die();
+    $sqlViceCounts = $db->prepare( 'SELECT id, vice_id, title, note, user_note, count FROM vice_counts WHERE user_id = :userId AND date = :date' );
+    // var_dump($sqlViceCounts);
+    // die();
     try {
         $sqlViceCounts->execute( [
             'userId' => $userId,
@@ -136,6 +143,11 @@ function getUsersViceCounts( $userId, $date ) {
         die();
     }
     $viceCounts = $sqlViceCounts->rowCount() ? $sqlViceCounts->fetchAll( PDO::FETCH_ASSOC ) : null;
+    // echo 'this is getUsersViceCounts()';
+    // echo '<pre>';
+    // var_dump($viceCounts);
+    // echo '</pre>';
+    // die();
     return $viceCounts;
 }
 

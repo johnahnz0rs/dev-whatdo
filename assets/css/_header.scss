@@ -3,23 +3,43 @@
     font-weight: bold;
     text-transform: capitalize;
     z-index: 4000;
-    li {
-        margin-left: 2em;
-        padding-top: 8px;
+    .navbar-brand img {
+        margin-left: 16px;
     }
+    // mobile
     @media only screen and (max-width: 420px) {
-        // .navbar {
-        //     line-height: 0.5;
-        // }
-        // .navbar-brand img {
-        //     height: 18px;
-        //     width: auto;
-        //     margin-left: 16px;
-        // }
-        // .navbar-toggler .navbar-toggler-iron {
-        //     width: 0.9em;
-        //     height: 0.9em;
-        // }
+        .navbar {
+            line-height: 0.5;
+            padding-top: 0;
+            padding-bottom: 0;    
+            li {
+                margin-left: auto;
+                padding: 0.3em;
+                a {
+                    color: gold;
+                }
+            }
+            .navbar-brand {
+                padding-top: 0;
+                padding-bottom: 0;
+                img {
+                    height: 30px;
+                    width: auto;
+                }
+            }
+            .navbar-toggler .navbar-toggler-icon {
+                width: 0.9em;
+                height: 0.9em;
+            }
+        }
+    }
+    // desktop
+    @media only screen and (min-width: 421px) {
+        .navbar {
+            .navbar-nav li { 
+                margin-left: 2em;
+            }
+        }
     }
     
 }

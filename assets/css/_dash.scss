@@ -20,10 +20,13 @@
             padding: 12px;
             background-color: rgba(0,0,0,0.5);
             color: #ffffff;
+            // desktop
             width: 650px;
+            // up to tablet
             @media only screen and (max-width: 1025px) {
                 width: 500px;
             }
+            // mobile
             @media only screen and (max-width: 420px) {
                 width: 375px;
             }
@@ -71,10 +74,18 @@
     #food {
         #total-macros {
             z-index: 2000;
+            top: 171px;
             padding: 12px;
             border: 1px solid black;
+            p {
+                margin-bottom: 0.1em;
+            }
             span {
                 font-weight: bold;
+            }
+            // mobile
+            @media only screen and (max-width: 420px) {
+                top: 145px;
             }
         }
         .accordion {
@@ -85,18 +96,32 @@
                 padding-right: 6px;
             }
             .recipe-select {
-                max-width: 100%;
+                width: 95%;
+                padding: 4px;
+                margin-bottom: 12px;
             }
         }
     }
 
     #vices {
         .single-vice {
-            width: 400px;
-            margin: 10px 0;
+            margin: 28px 0;
+             // desktop
+             width: 650px;
+             // up to tablet
+             @media only screen and (max-width: 1025px) {
+                 width: 500px;
+             }
+             // mobile
+             @media only screen and (max-width: 420px) {
+                 width: 375px;
+             }
             .manipulate-count {
                 font-size: 1.5em;
                 line-height: 0.9em;
+            }
+            h3 span {
+                margin-left: 8px;
             }
             .toggle-vice-note {
                 margin-right: 8px;
@@ -115,7 +140,14 @@
                 font-style: italic;
                 font-size: 0.6em;
             }
-            .toggle-add-detail-to-vice, .toggle-add-vice-user-note, i {
+            .toggle-add-vice-user-note {
+                font-size: 0.63em;
+                font-weight: 300;
+                padding: 0.5em 1em;
+                margin-bottom: 8px;
+                font-style: italic;
+            }
+            .toggle-add-vice-user-note, i {
                 &:hover {
                     cursor: pointer;
                 }
