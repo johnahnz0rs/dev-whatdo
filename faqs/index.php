@@ -5,7 +5,7 @@ require '../app/helpers.php';
 require '../components/header.php'; // initiates the html output (starting w/ <html>)
 ?>
 
-<div id="page-faq" class="container full-height py-5">
+<div id="page-faq" class="container py-5">
     <div class="row m-3">
         <div class="col-12 text-center">
             <h3>FAQs - coming soon</h3>

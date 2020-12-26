@@ -4,15 +4,30 @@
 <div id="component-reminders" class="mx-3">
     <div id="carousel-reminders" class="carousel slide" data-bs-ride="carousel">
 
-        
+        <!-- slide indicators -->
+        <ol class="carousel-indicators">
+            <!-- <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li> -->
+            <?php if( $reminders ) {
+                foreach( $reminders as $i=>$reminder ) {
+                    echo '<li data-bs-target="#carousel-reminders" data-bs-slide-to="' . $reminder['id'] .'"';
+                    echo !$i ? ' class="active"' : '';
+                    echo '></li>';
+                }
+            } ?>
+        </ol>
 
         <!-- slides container -->
-        <div class="carousel-inner pb-5 px-5">
+        <div class="carousel-inner px-5">
             <?php if( $reminders ) {
                 foreach( $reminders as $i=>$reminder ) {
                     echo '<div id="reminder-'. $reminder['id'] . '" class="carousel-item pb-5';
                     echo !$i ? ' active' : '';
-                    echo'"><div class="mx-auto" style="max-width: 500px;"><h3>' . $reminder['title'] . '</h3><p>' . $reminder['note'] . '</p></div></div>';
+                    echo'">';
+                        echo '<div class="mx-auto" style="max-width: 500px;">';
+                            echo '<h3>' . $reminder['title'] . '</h3>';
+                            echo '<p>' . $reminder['note'] . '</p>';
+                        echo '</div>';
+                    echo '</div>';
                 }
             } ?>
         </div>
@@ -26,17 +41,6 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <!-- <span class="visually-hidden">Next</span> -->
         </a>
-    </div>
 
-    <!-- slide indicators -->
-    <ol class="carousel-indicators">
-            <!-- <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li> -->
-            <?php if( $reminders ) {
-                foreach( $reminders as $i=>$reminder ) {
-                    echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="' . $i .'"';
-                    echo !$i ? ' class="active"' : '';
-                    echo '></li>';
-                }
-            } ?>
-        </ol>
+    </div>
 </div>

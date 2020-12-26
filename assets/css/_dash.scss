@@ -1,16 +1,98 @@
+// dashboard & components within
 #page-dash {
-    
-    #reminders, #wins, #food, #vices, #whatdo {
-        padding-top: 160px;
-        padding-bottom: 120px;
+
+    .stack-component {
+        min-height: 61vh;
+        // padding-top: 48px;
     }
 
-    #wins { }
+    #reminders {
+        .carousel-inner {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+        }
+    }
 
-    #food { }
+    #wins {  
+        .single-win {
+            margin: 10px 0;
+            padding: 12px;
+            background-color: rgba(0,0,0,0.5);
+            color: #ffffff;
+            width: 650px;
+            @media only screen and (max-width: 1025px) {
+                width: 500px;
+            }
+            @media only screen and (max-width: 420px) {
+                width: 375px;
+            }
+            .stack-this-win {
+                margin-right: 12px;
+            }
+            i, h3 {
+                // display: inline-block;
+                display: inline;
+                vertical-align: baseline;
+                text-align: left;
+            }
+            .toggle-note-chevron {
+                float: right;
+            }
+            .toggle-win-note {
+                margin-left: 8px;
+            }
+            i:hover {
+                cursor: pointer;
+            }
+            .win-note {
+                display: none;
+                margin-bottom: 0;
+                font-style: italic;
+                font-size: 0.85em;
+                p {
+                    text-align: justify;
+                    margin: 4px 2% 0px 12%;
+                }
+            }
+            .toggle-add-detail-to-win {
+                font-style: italic;
+                font-size: 0.6em;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            textarea {
+                width: 100%;
+            }
+        }
+    }
+
+    #food {
+        #total-macros {
+            z-index: 2000;
+            // margin: 24px;
+            padding: 12px;
+            border: 1px solid black;
+            // font-weight: bold;
+            span {
+                font-weight: bold;
+            }
+        }
+        .accordion {
+            .accordion-button span {
+                font-weight: bold;
+            }
+            .accordion-item i {
+                padding-right: 6px;
+            }
+        }
+        .recipe-select {
+            max-width: 100%;
+        }
+    }
+
     
-    #vices { }
 
-    #whatdo { }
 
 }

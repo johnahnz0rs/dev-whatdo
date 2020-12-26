@@ -7,11 +7,11 @@ require './components/header.php'; // initiates the html output (starting w/ <ht
 
 
 
-<div id="page-homepage" class="container-fluid stack-page">
+<div id="page-homepage" class="container-fluid">
 
 
     <!-- section - hero -->
-    <div id="hero" class="row full-height">
+    <div id="hero" class="row">
         <div class="d-flex flex-column justify-content-between full-width">
             <div>
                 <h1 class="font-big-john">Confidence & Self-Love don't come free.</h1>
@@ -25,7 +25,7 @@ require './components/header.php'; // initiates the html output (starting w/ <ht
 
 
     <!-- section - intro -->
-    <div id="intro" class="row py-5 px-3 full-height">
+    <div id="intro" class="row py-5 px-3">
         <div class="d-flex">
             <div class="col-1 col-md-2 col-lg-3">&nbsp;</div>
             <div class="col">
@@ -33,7 +33,7 @@ require './components/header.php'; // initiates the html output (starting w/ <ht
                 <p>It's <em>probably</em> because you haven't DONE anything to <em>MAKE YOURSELF</em> feel good.</p>
                 <p>Just doing the bare minimum will leave you feeling like a pussy forreal because REAL motherfuckers <strong>DO MORE</strong> than the bare minimum.<p>
                 <p>So unless you're into being a nobody who's hard to love, you gotta be honest with yourself, clarify who you want to be, then start/keep acting like that person. This site helps with that.</p>
-                <p><a href="<?php echo $user ? '/#login' : '/#register' ; ?>" style="color: black; font-weight: bold; font-size: 1.2em;"><span style="text-decoration: underline;">Let's get started</span>. <i class="fas fa-arrow-circle-right"></i></a></p>
+                <p><a href="<?php echo $user ? '/login' : '/#register' ; ?>" style="color: black; font-weight: bold; font-size: 1.2em;"><span style="text-decoration: underline;">Let's get started</span>. <i class="fas fa-arrow-circle-right"></i></a></p>
             </div>
             <div class="col-1 col-md-2 col-lg-3">&nbsp;</div>
         </div>
@@ -41,12 +41,12 @@ require './components/header.php'; // initiates the html output (starting w/ <ht
 
 
     <!-- section - visual break -->
-    <div id="break" class="row full-height"></div>
+    <div id="break" class="row"></div>
 
 
     <!-- section - register -->
     <?php if( !$user ) { ?>
-        <div id="register" class="row full-height text-light bg-dark justify-content-center">
+        <div id="register" class="row text-light bg-dark justify-content-center">
             <div class="col-12 col-md-6 col-lg-5">
                 <?php require './components/register.php'; ?>
             </div>

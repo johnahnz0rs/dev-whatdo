@@ -2,6 +2,9 @@
     color: #212121;
     background-color: #cfcfcf;
 
+    #hero, #intro, #break, #register {
+        min-height: 91vh;
+    }
     #hero {
         color: white;
         background-color: lightblue;
