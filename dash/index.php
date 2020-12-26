@@ -108,6 +108,8 @@ $( document ).ready( function() {
     let selectedMeals = { 1: null, 2: null, 3: null, 4: null, 5: null };
 
 
+
+
     // functions
     function setView( view ) {
         $( '#display-this-component' ).text( view );
@@ -144,12 +146,20 @@ $( document ).ready( function() {
         $totalCarbs.text(carbs);
     }
 
+
+
+
+
     // subpage menu - controls/toggles which component is being displayed
     $( '.submenu-link' ).on( 'click', function(e) {
         e.preventDefault();
         const section = $( this ).data( 'submenu' );
         setView( section );
     } );
+
+
+
+
 
     // wins - (1) stack/unstack a win;  
     $( '.stack-this-win' ).on( 'click', function() {
@@ -169,9 +179,13 @@ $( document ).ready( function() {
     } );
     // (3) toggle add-user-note
     $( '.toggle-add-win-user-note' ).on( 'click', function() {
-        const detailToBeToggled = '#add-detail-' + $( this ).data( 'id' );
-        $( detailToBeToggled ).toggle();
+        const winUserNoteToBeToggled = '#add-detail-win-' + $( this ).data( 'id' );
+        $( winUserNoteToBeToggled ).toggle();
     } );
+
+
+
+
 
     // // food - (1) meal selection; (2) daily totals; (3) add cookies
     // handler - when user selects a recipe, update that meal's .accordion-body w/ that recipe's macros, then update selectedMeals and call calculateTotalCalories

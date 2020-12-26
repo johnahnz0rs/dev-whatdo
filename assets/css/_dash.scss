@@ -71,10 +71,8 @@
     #food {
         #total-macros {
             z-index: 2000;
-            // margin: 24px;
             padding: 12px;
             border: 1px solid black;
-            // font-weight: bold;
             span {
                 font-weight: bold;
             }
@@ -86,13 +84,26 @@
             .accordion-item i {
                 padding-right: 6px;
             }
-        }
-        .recipe-select {
-            max-width: 100%;
+            .recipe-select {
+                max-width: 100%;
+            }
         }
     }
 
-    
+    #vices {
+        // .vice-note {
+        //     display: none;
+        //     margin-bottom: 0;
+        //     font-style: italic;
+        //     font-size: 0.85em;
+        // }
+        // .toggle-vice-note {
+        //     color: rgba(0,0,0,0.5);
+        //     &:hover {
+        //         cursor: pointer;
+        //     }
+        // }
+    }
 
 
 }

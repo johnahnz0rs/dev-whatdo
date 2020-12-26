@@ -16,7 +16,7 @@
                     <p>' . $win['note'] . '</p>    
                 </div>
                 <span class="toggle-add-win-user-note badge rounded-pill bg-light text-dark" data-id="' . $win['id'] . '">add a note</span>
-                <div id="add-detail-' . $win['id'] . '" class="w-100" style="display: none;">
+                <div id="add-detail-win-' . $win['id'] . '" class="w-100" style="display: none;">
                     <form action="../app/wins/post-update-win-usernote.php" method="POST">
                         <input name="user_id" type="hidden" value="' . $userId . '">
                         <input name="id" type="hidden" value="' . $win['id'] . '">

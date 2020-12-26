@@ -128,7 +128,7 @@ body {
     font-weight: bold; }
   body #page-dash #food .accordion .accordion-item i {
     padding-right: 6px; }
-  body #page-dash #food .recipe-select {
+  body #page-dash #food .accordion .recipe-select {
     max-width: 100%; }
   body #stackin-footer-nav {
     padding: 24px;
