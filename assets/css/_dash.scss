@@ -85,7 +85,7 @@
             }
             // mobile
             @media only screen and (max-width: 420px) {
-                top: 145px;
+                top: 127px;
             }
         }
         .accordion {
@@ -167,6 +167,37 @@
         //     &:hover {
         //         cursor: pointer;
         //     }
+        // }
+    }
+
+
+    #whatdo {
+        #suggestion-whatdo {
+            z-index: 2000;
+            top: 171px;
+            border: 1px solid black;
+            // mobile
+            @media only screen and (max-width: 420px) {
+                top: 127px;
+            }
+            #suggested-whatdo {
+                font-weight: bold;
+                font-size: 1.4em;
+            }
+        }
+        ul {
+            list-style-type: none;
+            li {
+                i {
+                    margin-right: 8px;
+                }
+                .badge {
+                    margin-left: 12px;
+                }
+            }
+        }
+        // .badge {
+        //     margin-left: 8px;
         // }
     }
 

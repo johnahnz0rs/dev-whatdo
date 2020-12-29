@@ -17,7 +17,7 @@ $arrayOfWinsToAdd = json_decode( $jsonArrayOfWinsToAdd, true );
 
 $stringAddWins = "INSERT INTO wins (user_id, win_id, date, win, note, stacked) VALUES ";
 foreach( $arrayOfWinsToAdd as $win ) {
-    $stringAddWins .= "(" . $userId . ", " . $win['id'] . ", '" . strval( $dateToday ) . "', '" . $win['win'] . "', '" . $win['note'] . "', '0'),";
+    $stringAddWins .= "(" . $userId . ", " . $win['id'] . ", \'" . strval( $dateToday ) . "\', '" . $win['win'] . "', '" . $win['note'] . "', '0'),";
 }
 
 

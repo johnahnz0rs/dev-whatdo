@@ -150,7 +150,7 @@ body {
       font-weight: bold; }
     @media only screen and (max-width: 420px) {
       body #page-dash #food #total-macros {
-        top: 145px; } }
+        top: 127px; } }
   body #page-dash #food .accordion .accordion-button span {
     font-weight: bold; }
   body #page-dash #food .accordion .accordion-item i {
@@ -196,6 +196,22 @@ body {
       cursor: pointer; }
     body #page-dash #vices .single-vice textarea {
       width: 100%; }
+  body #page-dash #whatdo #suggestion-whatdo {
+    z-index: 2000;
+    top: 171px;
+    border: 1px solid black; }
+    @media only screen and (max-width: 420px) {
+      body #page-dash #whatdo #suggestion-whatdo {
+        top: 127px; } }
+    body #page-dash #whatdo #suggestion-whatdo #suggested-whatdo {
+      font-weight: bold;
+      font-size: 1.4em; }
+  body #page-dash #whatdo ul {
+    list-style-type: none; }
+    body #page-dash #whatdo ul li i {
+      margin-right: 8px; }
+    body #page-dash #whatdo ul li .badge {
+      margin-left: 12px; }
   body #stackin-footer-nav {
     padding: 24px;
     color: white; }

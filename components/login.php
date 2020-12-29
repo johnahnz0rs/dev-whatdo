@@ -9,7 +9,7 @@
         <form id="login-form" action="/app/user/login.php" method="POST">
             <input name="username" type="text" placeholder="Username" required>
             <input name="password" type="password" placeholder="Password" required>
-            <input class="btn btn-success text-dark font-weight-bold" type="submit" value="You Got This" role="button">
+            <input class="btn btn-success text-light font-weight-bold" type="submit" value="You Got This" role="button">
             <div class="text-center">
                 <a href="/register" class="text-center" style="color: black; font-size: 1.05em;">Need an account? Register here.</a>
             </div>

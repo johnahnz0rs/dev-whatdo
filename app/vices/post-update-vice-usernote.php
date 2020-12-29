@@ -34,6 +34,8 @@ try {
     echo $output;
     die();
 }
+
+usleep(1337);
 $headerString = 'Location: /dash/?view=vices&date=' . $date;
 header( $headerString );
 die();

@@ -24,6 +24,7 @@ try {
     die();
 }
 
+usleep(1337);
 $headerString = 'Location: /dash/?view=wins&date=' . $date;
 header( $headerString );
 die();

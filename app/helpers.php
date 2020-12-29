@@ -124,14 +124,7 @@ function getUsersVices( $userId ) {
 // get user's viceCounts for $date (array of viceCounts)
 function getUsersViceCounts( $userId, $date ) {
     global $db;
-    // $date = strval($date);
-    // echo 'this is getUsersViceCounts()<br>';
-    // echo $date;
-    // echo '<br>' . $userId;
-    // die();
     $sqlViceCounts = $db->prepare( 'SELECT id, vice_id, title, note, user_note, count FROM vice_counts WHERE user_id = :userId AND date = :date' );
-    // var_dump($sqlViceCounts);
-    // die();
     try {
         $sqlViceCounts->execute( [
             'userId' => $userId,
@@ -143,11 +136,6 @@ function getUsersViceCounts( $userId, $date ) {
         die();
     }
     $viceCounts = $sqlViceCounts->rowCount() ? $sqlViceCounts->fetchAll( PDO::FETCH_ASSOC ) : null;
-    // echo 'this is getUsersViceCounts()';
-    // echo '<pre>';
-    // var_dump($viceCounts);
-    // echo '</pre>';
-    // die();
     return $viceCounts;
 }
 
@@ -193,7 +181,7 @@ function addViceCountsAsNecessary( $userId, $vices, $viceCounts, $date ) {
 // get user's whatdos (array)
 function getUsersWhatDos( $userId ) {
     global $db;
-    $sqlWhatDos = $db->prepare( 'SELECT id, title, created_at FROM whatdos WHERE user_id = :userId and active = 1' );
+    $sqlWhatDos = $db->prepare( 'SELECT id, title, note, created_at FROM whatdos WHERE user_id = :userId and active = 1' );
     try {
         $sqlWhatDos->execute( [
             'userId' => $userId

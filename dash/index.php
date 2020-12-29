@@ -154,8 +154,6 @@ $( document ).ready( function() {
         $totalCarbs.text(carbs);
     }
     function updateViceCount( id, count ) {
-        const date = '<?php echo $dates['today']; ?>';
-        const userId = '<?php echo $userId; ?>';
         const updateString = '../app/vices/update-vice-count.php?id=' + id + '&user_id=' + userId + '&count=' + count + '&date=' + date;
         window.location.href = updateString;
     }
@@ -166,7 +164,6 @@ $( document ).ready( function() {
     //     var stackURL = '../app/stack-win.php?id=' + winId;
     //     var newCheckmark = '<i class="far fa-check-square fa-lg win-stacked" onclick="unstackWin(' + winId + ')"></i>';
     //     var stackCount = parseInt( $('#stack-count').text() );
-
     //     // call the update script and update .win-checkmark
     //     var xhttp = new XMLHttpRequest();
     //     xhttp.onreadystatechange = function() {
@@ -188,7 +185,6 @@ $( document ).ready( function() {
     //     var unstackURL = '../app/unstack-win.php?id=' + winId;
     //     var newCheckmark = '<i class="far fa-square fa-lg win-not-stacked" onclick="stackWin(' + winId + ')"></i>';
     //     var stackCount = parseInt( $('#stack-count').text() );
-
     //     // call the update script and update .win-checkmark
     //     var xhttp = new XMLHttpRequest();
     //     xhttp.onreadystatechange = function() {
@@ -298,13 +294,16 @@ $( document ).ready( function() {
     $( '.vice-increment' ).on( 'click', function() {
         const viceCountId = $( this ).data( 'id' );
         let viceCountCount = $( this ).data( 'count' );
+        viceCountCount = parseInt(viceCountCount);
         viceCountCount++;
+        // alert(viceCountCount);
         updateViceCount( viceCountId, viceCountCount );
     } );
     $( '.vice-decrement' ).on( 'click', function() {
         const viceCountId = $( this ).data( 'id' );
         let viceCountCount = $( this ).data( 'count' );
-        viceCountCount--;
+        viceCountCount = parseInt(viceCountCount);
+        viceCountCount = viceCountCount - 1;
         // alert(viceCountCount);
         updateViceCount( viceCountId, viceCountCount );
     } );
@@ -316,6 +315,51 @@ $( document ).ready( function() {
         const viceUserNoteToBeToggled = '#add-detail-vice-' + $( this ).data( 'id');
         $( viceUserNoteToBeToggled ).toggle();
     } );
+
+
+
+
+    // whatdo
+    // elements
+    const $whatDo = $( '.button-whatdo' );
+    const $suggestedWhatDo = $( '#suggested-whatdo' );
+    const $letsGo = $( '#button-lets-whatdo' );
+    // js vars
+    const whatDos = <?php echo json_encode( $whatDos ); ?>;
+    const count = Object.keys(whatDos).length;
+    let suggestedWhatDo = null;
+    
+
+    function suggestWhatDo( ) {
+        const randomNum = Math.floor( ( Math.random() * count ) );
+        suggestedWhatDo = whatDos[randomNum];
+        $letsGo.data( 'whatdo-id', suggestedWhatDo['id'] );
+        $suggestedWhatDo.text( suggestedWhatDo['title'] );
+    }
+
+    $whatDo.on( 'click', function() {
+        // alert("you clicked $('.button-whatdo')");
+        $( '#whatdo #array-1' ).hide();
+        $( '#whatdo #array-2' ).show();
+        suggestWhatDo();
+    } );
+
+    $letsGo.on( 'click', function() {
+        const letsGo = confirm( 'Do you accept the challenge? Will you do this and STACK another win today?' );
+        
+        if( letsGo ) {
+            const title = suggestedWhatDo['title'];
+            const note = suggestedWhatDo['note'];
+            const whatDoId = $( this ).data( 'whatdo-id' );
+            const updateString = '../app/whatdo/stack-a-whatdo.php?whatdo_id=' + whatDoId + '&user_id=' + userId + '&date=' + date + '&title=' + title + '&note=' + note;
+            window.location.href = updateString;
+        // } else {
+            // console.log('we aint doing this');
+        }
+        
+    } );
+
+
 
 
 
