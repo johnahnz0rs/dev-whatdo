@@ -18,18 +18,19 @@ body {
     .font-slim-joe { font-family: 'SlimJoe', Arial, sans-serif; }
 
     // custom dimensions
-    .full-width { 
+    // .full-width { 
         // width: 100%;
         // margin-left: 0;
         // margin-right: 0;
         // padding-left: 0;
         // padding-right: 0;
-    }
+    // }
 
     // import partials
     @import 'header';
     @import 'homepage';
     @import 'dash';
+    @import 'account';
     @import 'footer'; 
 
 }

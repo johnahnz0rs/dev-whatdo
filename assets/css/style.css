@@ -20,6 +20,8 @@ body {
     z-index: 4000; }
     body #stackin-header-nav .navbar-brand img {
       margin-left: 16px; }
+    body #stackin-header-nav .navbar li a {
+      color: gold; }
     @media only screen and (max-width: 420px) {
       body #stackin-header-nav .navbar {
         line-height: 0.5;
@@ -28,8 +30,6 @@ body {
         body #stackin-header-nav .navbar li {
           margin-left: auto;
           padding: 0.3em; }
-          body #stackin-header-nav .navbar li a {
-            color: gold; }
         body #stackin-header-nav .navbar .navbar-brand {
           padding-top: 0;
           padding-bottom: 0; }
@@ -42,6 +42,8 @@ body {
     @media only screen and (min-width: 421px) {
       body #stackin-header-nav .navbar .navbar-nav li {
         margin-left: 2em; } }
+    body #stackin-header-nav #dates a {
+      color: #F5F5F5; }
   body #page-homepage {
     color: #212121;
     background-color: #cfcfcf; }
@@ -141,7 +143,7 @@ body {
       width: 100%; }
   body #page-dash #food #total-macros {
     z-index: 2000;
-    top: 171px;
+    top: 178px;
     padding: 12px;
     border: 1px solid black; }
     body #page-dash #food #total-macros p {
@@ -150,7 +152,7 @@ body {
       font-weight: bold; }
     @media only screen and (max-width: 420px) {
       body #page-dash #food #total-macros {
-        top: 127px; } }
+        top: 134px; } }
   body #page-dash #food .accordion .accordion-button span {
     font-weight: bold; }
   body #page-dash #food .accordion .accordion-item i {
@@ -212,6 +214,11 @@ body {
       margin-right: 8px; }
     body #page-dash #whatdo ul li .badge {
       margin-left: 12px; }
+  body #page-account #reminders, body #page-account #program, body #page-account #vices, body #page-account #whatdo {
+    min-height: 90vh;
+    padding: 36px 12px; }
+  body #page-account .single-reminder {
+    margin: 24px 0; }
   body #stackin-footer-nav {
     padding: 24px;
     color: white; }

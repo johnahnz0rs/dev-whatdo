@@ -74,7 +74,7 @@
     #food {
         #total-macros {
             z-index: 2000;
-            top: 171px;
+            top: 178px;
             padding: 12px;
             border: 1px solid black;
             p {
@@ -85,7 +85,7 @@
             }
             // mobile
             @media only screen and (max-width: 420px) {
-                top: 127px;
+                top: 134px;
             }
         }
         .accordion {

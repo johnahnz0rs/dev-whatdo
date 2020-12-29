@@ -1,6 +1,6 @@
 <?php ?>
 
-<footer id="stackin-footer-nav" class="full-width bg-secondary">
+<footer id="stackin-footer-nav" class="bg-secondary">
     <div class="text-right">
         <p><a href="/faqs">FAQs</a></p>
         <?php if( !$user ) { ?>

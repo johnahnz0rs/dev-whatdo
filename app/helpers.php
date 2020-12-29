@@ -30,6 +30,23 @@ function getUsersReminders( $userId ) {
     return $reminders;
 }
 
+// get ALL of user's reminders (active and inactive)
+function getAllUsersReminders( $userId ) {
+    global $db;
+    $sqlAllReminders = $db->prepare( "SELECT id, title, note, active FROM reminders WHERE user_id = :userId" );
+    try {
+        $sqlAllReminders->execute( [
+            'userId' => $userId
+        ] );
+    } catch( PDOException $e ) {
+        $output = $e->getMessage();
+        echo $output;
+        die();
+    }
+    $reminders = $sqlAllReminders->rowCount() ? $sqlAllReminders->fetchAll( PDO::FETCH_ASSOC ) : null;
+    return $reminders;
+}
+
 // get user's program (what should all be done everyday)
 function getUsersProgram( $userId ) {
     global $db;

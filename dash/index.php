@@ -11,40 +11,29 @@ if ( !$userId or !$username or !$passHash ) {
     die();
 }
 
-/** requires and vars */
+/* requires and vars */
 require '../app/db.php'; // just initiates the dbase connection
 require '../app/helpers.php';
 require '../components/recipes.php';
 $view = isset( $_GET['view'] ) ? $_GET['view'] : 'reminders';
 $date = isset( $_GET['date'] ) ? $_GET['date'] : null;
 $dates = getArrayOfDateStringsForYesterdayTodayTomorrow( $date );
+
 // get user's daily program and wins
 $program = getUsersProgram( $userId );
 $wins = getUsersWins( $userId, $dates['today'] );
 $addWins = addWinsAsNecessary( $userId, $program, $wins, $dates['today'] );
+
 // get user's vices and viceCounts
 $vices = getUsersVices( $userId );
-// echo 'got vices!<br><pre>';
-// var_dump($vices);
-// echo '</pre>';
-// echo 'datesToday: ' . $dates['today'] . ' (' . gettype($dates['today']) . ')<br>';
-// die();
 $viceCounts = getUsersViceCounts( $userId, $dates['today'] );
-// echo 'got viceCounts!<br><pre>';
-// var_dump($viceCounts);
-// echo '</pre>';
-// die();
 $addVices = addViceCountsAsNecessary( $userId, $vices, $viceCounts, $dates['today'] );
-
-// echo 'got addVices<br><pre>';
-// var_dump($addVices);
-// echo '</pre>';
-// die();
 if( $addWins or $addVices ) { 
     $headerString = 'Location: /dash/?date=' . $dates['today'];
     header( $headerString );
     die();
 }
+
 // get user's reminders
 $reminders = getUsersReminders( $userId );
 // get user's whatDos and whatDones
@@ -61,31 +50,26 @@ require '../components/header.php'; // initiates the html output (starting w/ <h
 
     <!-- reminders -->
     <div id="reminders" class="stack-component text-light bg-dark"<?php echo $view == 'reminders' ? '': ' style="display: none"'; ?>>
-        <!-- <h2 class="full-width text-center mb-5">Reminders</h2> -->
         <?php require '../components/reminders.php'; ?> 
     </div>
 
     <!-- stackin wins -->
     <div id="wins" class="stack-component"<?php echo $view == 'wins' ? '': ' style="display: none"'; ?>>
-        <!-- <h2 class="full-width text-center mb-5">Daily Wins</h2> -->
         <?php require '../components/wins.php'; ?>
     </div>
 
     <!-- meal plan -->
     <div id="food" class="stack-component text-secondary bg-info"<?php echo $view == 'food' ? '': ' style="display: none"'; ?>>
-        <!-- <h2 class="full-width text-center">Meal Plan</h2> -->
         <?php require '../components/food.php'; ?>
     </div>
 
     <!-- vices -->
     <div id="vices" class="stack-component"<?php echo $view == 'vices' ? '': ' style="display: none"'; ?>>
-        <!-- <h2 class="full-width text-center mb-5">Vices</h2> -->
         <?php require '../components/vices.php'; ?>
     </div>
 
     <!-- whatDo -->
     <div id="whatdo" class="stack-component text-light bg-dark"<?php echo $view == 'whatdo' ? '': ' style="display: none"'; ?>>
-        <!-- <h2 class="full-width text-center">whatDo</h2> -->
         <?php require '../components/whatdo.php'; ?>
     </div>
     
@@ -296,7 +280,6 @@ $( document ).ready( function() {
         let viceCountCount = $( this ).data( 'count' );
         viceCountCount = parseInt(viceCountCount);
         viceCountCount++;
-        // alert(viceCountCount);
         updateViceCount( viceCountId, viceCountCount );
     } );
     $( '.vice-decrement' ).on( 'click', function() {
@@ -304,7 +287,6 @@ $( document ).ready( function() {
         let viceCountCount = $( this ).data( 'count' );
         viceCountCount = parseInt(viceCountCount);
         viceCountCount = viceCountCount - 1;
-        // alert(viceCountCount);
         updateViceCount( viceCountId, viceCountCount );
     } );
     $( '.toggle-vice-note' ).on( 'click', function() {
@@ -338,7 +320,6 @@ $( document ).ready( function() {
     }
 
     $whatDo.on( 'click', function() {
-        // alert("you clicked $('.button-whatdo')");
         $( '#whatdo #array-1' ).hide();
         $( '#whatdo #array-2' ).show();
         suggestWhatDo();
@@ -353,8 +334,6 @@ $( document ).ready( function() {
             const whatDoId = $( this ).data( 'whatdo-id' );
             const updateString = '../app/whatdo/stack-a-whatdo.php?whatdo_id=' + whatDoId + '&user_id=' + userId + '&date=' + date + '&title=' + title + '&note=' + note;
             window.location.href = updateString;
-        // } else {
-            // console.log('we aint doing this');
         }
         
     } );
