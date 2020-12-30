@@ -1,7 +1,6 @@
 <?php
 session_start();
-// echo 'session started';
-// die();
+
 // only "logged in" users allowed in /account
 $userId = isset( $_COOKIE['user_id'] ) ? $_COOKIE['user_id'] : null;
 $username = isset( $_COOKIE['username'] ) ? $_COOKIE['username'] : null;
@@ -11,6 +10,7 @@ if ( !$userId or !$username or !$passHash ) {
     header( $headerString );
     die();
 }
+
 
 /* requires and vars */
 require '../app/db.php'; // just initiates the dbase connection
@@ -33,43 +33,13 @@ require '../components/header.php'; // initiates the html output (starting w/ <h
 
 ?>
 
-<div id="page-account" class="full-width">
+<div id="page-account">
 
     <!-- <p style="margin-top: 100px;">this is /account</p> -->
 
     <!-- reminders -->
     <div id="reminders" class="bg-info">
-        
-        <h2 class="text-center">reminders</h2>
-
-        <div id="active-reminders">
-            <?php if( $reminders ) {
-                foreach( $remindersActive as $reminder ) {
-                    // echo '<pre>';
-                    // var_dump( $reminder );
-                    // echo '</pre>';
-
-                    echo '<div class="row single-reminder">
-                        <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-warning p-3">
-                            <h3>' . $reminder['title'] . '</h3>
-                            <p>' . $reminder['note'] . '</p>
-                        </div>
-                    </div>';
-                }
-            } ?>
-        </div>
-
-        <div id="inactive-reminders">
-            <p id="toggle-inactive-reminders"> show / hide inactive reminders</p>
-            <div id="display-inactive-reminders" style="display: none;">
-                <?php foreach( $remindersInactive as $reminder ) {
-                    echo '<pre>';  
-                    var_dump( $reminder );
-                    echo '</pre>';  
-                } ?>
-            </div>
-        </div>
-
+        <?php require '../components/account-reminders.php'; ?>
     </div>
 
     <!-- program -->
@@ -98,9 +68,58 @@ require '../components/header.php'; // initiates the html output (starting w/ <h
 <script defer>
 $( document ).ready( function() {
 
+    const userId = <?php echo $userId; ?>;
 
+    // edit a reminder (active only)
+    $( '.update-reminder, .cancel-update-reminder' ).on( 'click', function(e) {
+        e.preventDefault();
+        const id = $(this).data('id');
+        $( '#single-reminder-' + id ).toggle();
+        $( '#single-reminder-form-' + id ).toggle();
+        $( '#manipulate-reminder-' + id ).toggle();
+    } );
 
+    // deactivate a reminder (active only)
+    $( '.deactivate-reminder' ).on( 'click', function(e) {
+        e.preventDefault();
+        const redirectString = '../app/reminders/deactivate-a-reminder.php?id=' + $(this).data('id') + '&user_id=' + userId;
+        window.location.href = redirectString;
+    } );
 
+    // activate a reminder (inactive only)
+    $( '.activate-reminder' ).on( 'click', function(e) {
+        e.preventDefault();
+        const redirectString = '../app/reminders/activate-a-reminder.php?id=' + $(this).data('id') + '&user_id=' + userId;
+        window.location.href= redirectString;
+    } );
+
+    // delete a reminder
+    $( '.delete-reminder' ).on( 'click', function(e) {
+        e.preventDefault();
+        const redirectString = '../app/reminders/delete-a-reminder.php?id=' + $(this).data('id') + '&user_id=' + userId;
+        window.location.href = redirectString;
+    } );
+
+    // show / hide inactive reminders
+    $( '#toggle-inactive-reminders' ).on( 'click', function(e) {
+        e.preventDefault();
+        $( '#display-inactive-reminders' ).toggle();
+        $( '#create-reminder' ).hide();
+    } );
+
+    // show / hide create a new reminder
+    $( '#toggle-create-reminder' ).on( 'click', function(e) {
+        e.preventDefault();
+        $( '#create-reminder' ).toggle();
+        $( '#display-inactive-reminders' ).hide();
+    } );
+
+    // cancel create-a-new-reminder
+    $( '.cancel-create-reminder' ).on( 'click', function(e) {
+        e.preventDefault();
+        $( '#create-title, #create-note' ).val( '' );
+        $( '#create-reminder' ).hide();
+    } );
 
 } );
 </script>

@@ -7,9 +7,40 @@
         padding: 36px 12px;
     }
 
-    .single-reminder {
-        margin: 24px 0;
+    #reminders {
+        .single-reminder {
+            margin: 24px 0;
+            .inactive-reminder {
+                background-color: rgba( 0,0,0,.3 );
+            }
+        }
+        form {
+            textarea {
+                width: 100%;
+                padding: 4px 8px;
+                resize: both;
+                overflow: scroll;
+                &[name="title"] {
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    // height: 38px;
+                }
+                &[name="note"] {
+                    height: 160px;
+                }
+            }
+            select {
+                min-width: 35%;
+                padding: 4px 8px;
+            }
+        }
+        #toggle-inactive-reminders, #toggle-create-reminder {
+            cursor: pointer;
+            font-style: italic;
+            font-weight: bold;
+            font-size: .9em;
+        }
     }
-
+    
 
 }

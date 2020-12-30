@@ -217,8 +217,28 @@ body {
   body #page-account #reminders, body #page-account #program, body #page-account #vices, body #page-account #whatdo {
     min-height: 90vh;
     padding: 36px 12px; }
-  body #page-account .single-reminder {
+  body #page-account #reminders .single-reminder {
     margin: 24px 0; }
+    body #page-account #reminders .single-reminder .inactive-reminder {
+      background-color: rgba(0, 0, 0, 0.3); }
+  body #page-account #reminders form textarea {
+    width: 100%;
+    padding: 4px 8px;
+    resize: both;
+    overflow: scroll; }
+    body #page-account #reminders form textarea[name="title"] {
+      font-size: 1.3em;
+      font-weight: bold; }
+    body #page-account #reminders form textarea[name="note"] {
+      height: 160px; }
+  body #page-account #reminders form select {
+    min-width: 35%;
+    padding: 4px 8px; }
+  body #page-account #reminders #toggle-inactive-reminders, body #page-account #reminders #toggle-create-reminder {
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    font-size: .9em; }
   body #stackin-footer-nav {
     padding: 24px;
     color: white; }

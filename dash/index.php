@@ -50,27 +50,27 @@ require '../components/header.php'; // initiates the html output (starting w/ <h
 
     <!-- reminders -->
     <div id="reminders" class="stack-component text-light bg-dark"<?php echo $view == 'reminders' ? '': ' style="display: none"'; ?>>
-        <?php require '../components/reminders.php'; ?> 
+        <?php require '../components/dash-reminders.php'; ?> 
     </div>
 
     <!-- stackin wins -->
     <div id="wins" class="stack-component"<?php echo $view == 'wins' ? '': ' style="display: none"'; ?>>
-        <?php require '../components/wins.php'; ?>
+        <?php require '../components/dash-wins.php'; ?>
     </div>
 
     <!-- meal plan -->
     <div id="food" class="stack-component text-secondary bg-info"<?php echo $view == 'food' ? '': ' style="display: none"'; ?>>
-        <?php require '../components/food.php'; ?>
+        <?php require '../components/dash-food.php'; ?>
     </div>
 
     <!-- vices -->
     <div id="vices" class="stack-component"<?php echo $view == 'vices' ? '': ' style="display: none"'; ?>>
-        <?php require '../components/vices.php'; ?>
+        <?php require '../components/dash-vices.php'; ?>
     </div>
 
     <!-- whatDo -->
     <div id="whatdo" class="stack-component text-light bg-dark"<?php echo $view == 'whatdo' ? '': ' style="display: none"'; ?>>
-        <?php require '../components/whatdo.php'; ?>
+        <?php require '../components/dash-whatdo.php'; ?>
     </div>
     
 </div>
