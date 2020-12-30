@@ -22,7 +22,7 @@
                 foreach( $reminders as $i=>$reminder ) {
                     echo '<div id="reminder-'. $reminder['id'] . '" class="carousel-item pb-5';
                     echo !$i ? ' active' : '';
-                    echo'">';
+                    echo'" data-bs-interval="10000">';
                         echo '<div class="mx-auto" style="max-width: 500px;">';
                             echo '<h3>' . $reminder['title'] . '</h3>';
                             echo '<p>' . $reminder['note'] . '</p>';

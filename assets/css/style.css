@@ -102,6 +102,8 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
+    body #page-dash #reminders .carousel-inner h3 {
+      text-decoration: underline; }
   body #page-dash #wins .single-win {
     margin: 10px 0;
     padding: 12px;
@@ -143,7 +145,7 @@ body {
       width: 100%; }
   body #page-dash #food #total-macros {
     z-index: 2000;
-    top: 178px;
+    top: 171px;
     padding: 12px;
     border: 1px solid black; }
     body #page-dash #food #total-macros p {
@@ -152,7 +154,7 @@ body {
       font-weight: bold; }
     @media only screen and (max-width: 420px) {
       body #page-dash #food #total-macros {
-        top: 134px; } }
+        top: 127px; } }
   body #page-dash #food .accordion .accordion-button span {
     font-weight: bold; }
   body #page-dash #food .accordion .accordion-item i {
@@ -219,6 +221,10 @@ body {
     padding: 36px 12px; }
   body #page-account #reminders .single-reminder {
     margin: 24px 0; }
+    body #page-account #reminders .single-reminder div div h3 {
+      text-decoration: underline; }
+    body #page-account #reminders .single-reminder div div p {
+      margin-bottom: 1.5em; }
     body #page-account #reminders .single-reminder .inactive-reminder {
       background-color: rgba(0, 0, 0, 0.3); }
   body #page-account #reminders form textarea {
