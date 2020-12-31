@@ -44,12 +44,8 @@ foreach( $reminders as $reminder ) {
                                 <textarea name="title" rows="1">' . $reminder['title'] . '</textarea>
                                 <textarea name="note">' . $reminder['note'] . '</textarea>
                                 <select name="active">
-                                    <option value="active"';
-                                    echo $reminder['active'] ? ' selected' : '';
-                                    echo '>Active</option>
-                                    <option value="inactive"';
-                                    echo $reminder['active'] ? '' : ' selected';
-                                    echo '>Inactive</option>
+                                    <option value="active" selected>Active</option>
+                                    <option value="inactive">Inactive</option>
                                 </select>
                                 <div>
                                     <span class="float-end">
@@ -99,13 +95,14 @@ foreach( $reminders as $reminder ) {
 
     <div id="create-reminder" style="display: none;">
         <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-light p-3">
-            <form action="../app/reminders/create-a-reminder.php" method="POST">
+            <form action="../app/reminders/post-create-a-reminder.php" method="POST">
                 <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
+                <input type="hidden" name="page" value="account">
                 <textarea name="title" id="create-title" placeholder="Reminder Title (big, bold)"></textarea>
                 <textarea name="note" id="create-note" placeholder="Reminder Note (details, description)"></textarea>
                 <div class="pb-5">
                     <span class="float-end">
-                        <button data-id="' . $reminder['id'] . '" class="cancel-create-reminder btn btn-outline-primary">Cancel</button>
+                        <button class="cancel-create-reminder btn btn-outline-primary">Cancel</button>
                         <input class="btn btn-success" type="submit" value="Add New Reminder">
                     </span>
                 </div>
@@ -122,7 +119,7 @@ $(document).ready(function() {
     const userId = <?php echo $userId; ?>;
     const date = '<?php echo $todaysDate; ?>';
 
-    // edit a reminder (active only)
+    // toggle edit a reminder (active only)
     $( '.update-reminder, .cancel-update-reminder' ).on( 'click', function(e) {
         e.preventDefault();
         const id = $(this).data('id');

@@ -41,7 +41,7 @@ require '../components/component-header.php'; // initiates the html output (star
     <!-- program -->
     <?php if( $view == 'wins' ) {
         echo '<div id="program" class="bg-light">';
-            require '../components/account-wins.php';
+            require '../components/account-program.php';
             // <h2 class="text-center">Wins</h2>
         echo '</div>';
     } ?>

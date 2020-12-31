@@ -26,6 +26,7 @@ if( $id == null or $userId == null or $stacked == null or $date == null ) {
 require '../db.php';
 $sqlUpdateWinStacked = $db->prepare( "UPDATE wins SET stacked = :stacked WHERE id = :id and user_id = :userId" );
 $stacked = $stacked == '1' ? '0' : '1' ;
+
 try {
     $sqlUpdateWinStacked->execute( [
         'stacked' => $stacked,
@@ -37,6 +38,7 @@ try {
     echo $output;
     die();
 }
+
 usleep(1337);
 $headerString = 'Location: /dash/?view=wins&date=' . $date;
 header( $headerString );
