@@ -6,7 +6,8 @@ $username = isset( $_COOKIE['username'] ) ? $_COOKIE['username'] : null;
 $passHash = isset( $_COOKIE['pass_hash'] ) ? $_COOKIE['pass_hash'] : null;
 $user = ( $userId and $username and $passHash ) ? true : false;
 $request_uri = strtolower( $_SERVER['REQUEST_URI'] );
-$request_uri = strpos( $request_uri, '/dash');
+$dash_request_uri = strpos( $request_uri, 'dash');
+$account_request_uri = strpos( $request_uri, 'account');
 // if( strpos( $request_uri, 'dash' ) or strpos( $request_uri, 'account' ) ) {
 //     $request_uri = true;
 // } else {
@@ -80,18 +81,34 @@ $request_uri = strpos( $request_uri, '/dash');
             
         </nav>
 
-        <?php if( $user and $request_uri !== false ) { 
-            echo '<div id="dates" class="text-center p-2 bg-secondary text-light">';
-                echo '<h5 class="m-0 text-center">' . $dates['today'] .'</h5>';
-                echo '<p class="d-flex justify-content-around mb-0">';
-                    echo '<a id="link-reminders" data-submenu="Reminders" class="submenu-link" href="#">Reminders</a>';
-                    echo '<a id="link-wins" data-submenu="Wins" class="submenu-link" href="#">Wins</a>';
-                    echo '<a id="link-food" data-submenu="Food" class="submenu-link" href="#">Food</a>';
-                    echo '<a id="link-vices" data-submenu="Vices" class="submenu-link" href="#">Vices</a>';
-                    echo '<a id="link-whatdo" data-submenu="whatDo" class="submenu-link" href="#">whatDo</a>';
-                echo '</p>';
-                echo '<h2 id="display-this-component" class="mb-0 mt-1" style="font-weight: bold;"></h2>';
-            echo '</div>';
+        <!-- dashboard > submenu -->
+        <?php if( $user and $dash_request_uri !== false ) { 
+            $todaysDate = $dates['today'];
+            echo '<div id="dates" class="text-center p-2 bg-secondary text-light">
+                <h5 class="m-0 text-center">' . $todaysDate .'</h5>
+                <p class="d-flex justify-content-around mb-0">
+                    <a href="/dash/?view=reminders&date=' . $todaysDate . '">Reminders</a>
+                    <a href="/dash/?view=wins&date=' . $todaysDate . '">Wins</a>
+                    <a href="/dash/?view=food&date=' . $todaysDate . '">Food</a>
+                    <a href="/dash/?view=vices&date=' . $todaysDate . '">Vices</a>
+                    <a href="/dash/?view=whatdo&date=' . $todaysDate . '">whatDo</a>
+                </p>
+                <h2 id="display-this-component" class="mb-0 mt-1" style="font-weight: bold;"></h2>
+            </div>';
+        } ?>
+        
+        <!-- my account > submenu -->
+        <?php if( $user and $account_request_uri !== false ) { 
+            echo '<div id="dates" class="text-center p-2 bg-secondary text-light">
+                <h2 class="m-0 my-2 text-center">My Account</h2>
+                <p class="d-flex justify-content-around mb-0">
+                    <a href="/account/?view=reminders&date=' . $todaysDate . '">Reminders</a>
+                    <a href="/account/?view=wins&date=' . $todaysDate . '">Wins</a>
+                    <a href="/account/?view=food&date=' . $todaysDate . '">Food</a>
+                    <a href="/account/?view=vices&date=' . $todaysDate . '">Vices</a>
+                    <a href="/account/?view=whatdo&date=' . $todaysDate . '">whatDo</a>
+                </p>
+            </div>';
         } ?>
 
         

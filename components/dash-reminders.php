@@ -1,6 +1,11 @@
 <?php 
 
+// get user's reminders
+$reminders = getUsersReminders( $userId );
+
 ?>
+
+
 <div id="component-reminders" class="mx-3">
     <div id="carousel-reminders" class="carousel slide" data-bs-ride="carousel">
 
@@ -22,12 +27,12 @@
                 foreach( $reminders as $i=>$reminder ) {
                     echo '<div id="reminder-'. $reminder['id'] . '" class="carousel-item pb-5';
                     echo !$i ? ' active' : '';
-                    echo'" data-bs-interval="10000">';
-                        echo '<div class="mx-auto" style="max-width: 500px;">';
-                            echo '<h3>' . $reminder['title'] . '</h3>';
-                            echo '<p>' . $reminder['note'] . '</p>';
-                        echo '</div>';
-                    echo '</div>';
+                    echo'" data-bs-interval="10000">
+                        <div class="mx-auto" style="max-width: 500px;">
+                            <h3>' . $reminder['title'] . '</h3>
+                            <p>' . $reminder['note'] . '</p>
+                        </div>
+                    </div>';
                 }
             } ?>
         </div>
@@ -44,3 +49,10 @@
 
     </div>
 </div>
+
+<!-- custom script for /dash/reminders -->
+<!-- <script type="text/javascript" defer>
+    $(document).ready(function() {
+
+    });
+</script> -->

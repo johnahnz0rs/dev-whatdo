@@ -64,6 +64,23 @@ function getUsersProgram( $userId ) {
     return $program;
 }
 
+// get ALL of a user's programs (including the inactive ones)
+function getAllUsersProgram( $userId ) {
+    global $db;
+    $sqlProgram = $db->prepare( "SELECT id, title, note, active FROM programs WHERE user_id = :userId" );
+    try {
+        $sqlProgram->execute( [
+            'userId' => $userId
+        ] );
+    } catch( PDOException $e ) {
+        $output = $e->getMessage();
+        echo $output;
+        die();
+    }
+    $program = $sqlProgram->rowCount() ? $sqlProgram->fetchAll( PDO::FETCH_ASSOC ) : null;
+    return $program;
+}
+
 // get user's wins for $date
 function getUsersWins( $userId, $date ) {
     global $db;

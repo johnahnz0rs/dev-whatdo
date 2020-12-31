@@ -1,10 +1,32 @@
-<?php ?>
+<?php
+
+// get user's daily program and wins
+$program = getUsersProgram( $userId );
+$wins = getUsersWins( $userId, $todaysDate );
+$addWins = addWinsAsNecessary( $userId, $program, $wins, $todaysDate );
+
+if( $addWins ) { 
+    $headerString = 'Location: /dash/?view=vices&date=' . $todaysDate;
+    header( $headerString );
+    die();
+}
+
+?>
 
 <div id="component-wins" class="py-3">
     
     <?php foreach( $wins as $win ) {
-        $stackedClass = $win['stacked'] ? 'fa-check-square' : 'fa-square';
 
+        // echo '<pre>';
+        // var_dump($win);
+        // echo '</pre>';
+        // break;
+        $stackedClass;
+        if( $win['stacked'] == 1 ) {
+            $stackedClass = 'fa-check-square';
+        } else {
+            $stackedClass = 'fa-square';
+        }
         echo '<div class="d-flex justify-content-center">
             <div class="single-win">
                 <div class="d-flex justify-content-between align-items-baseline">
@@ -31,3 +53,39 @@
     } ?>
 
 </div>
+
+
+<!-- custom js for /dash/wins -->
+<script type="text/javascript" defer>
+$(document).ready(function() {
+
+    // set vars
+    const userId = <?php echo $userId; ?>;
+    const date = '<?php echo $todaysDate; ?>';
+
+    // stack or unstack a win
+    $( '.stack-this-win' ).on( 'click', function() {
+        const id = $( this ).data( 'id' ).toString();
+        const stacked = $( this ).data( 'stacked' ).toString();
+        if( !id || !stacked ) {
+            alert( 'Something is wrong. Please refresh the page. Please contact us if problem persists.' );
+        } else {
+            const updateString = '../app/wins/update-win-stacked.php?id=' + id + '&user_id=' + userId + '&stacked=' + stacked + '&date=' + date;
+            window.location.href = updateString;
+        }
+    } );
+
+    // toggle win-note
+    $( '.toggle-win-note' ).on( 'click', function() {
+        const formToBeToggled = '#winnote-' + $( this ).data( 'id' );
+        $( formToBeToggled ).toggle();
+    } );
+
+    // toggle add-user-note
+    $( '.toggle-add-win-user-note' ).on( 'click', function() {
+        const winUserNoteToBeToggled = '#add-detail-win-' + $( this ).data( 'id' );
+        $( winUserNoteToBeToggled ).toggle();
+    } );
+
+});
+</script>

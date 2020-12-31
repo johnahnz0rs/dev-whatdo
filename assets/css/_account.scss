@@ -49,6 +49,24 @@
             font-size: .9em;
         }
     }
+
+    #wins {
+        #toggle-inactive-wins, #toggle-create-win {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: .9em;
+            color: red;
+        }
+    }
     
+    #food {
+        padding: 36px 12px;
+        p {
+            margin: 24px 0;
+        };
+        ul {
+            margin-bottom: 3rem;
+        }
+    }
 
 }

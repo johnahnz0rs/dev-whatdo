@@ -7,7 +7,7 @@ session_start();
 <div id="register-component">
     <h2 class="text-center">Register</h2>
     <?php if( isset($_COOKIE['register_result'])) { ?>
-        <p class="bg-danger full-width m-3"><?php echo $_COOKIE['register_result']; ?></p>
+        <p class="bg-danger m-3"><?php echo $_COOKIE['register_result']; ?></p>
     <?php } ?>
     <form id="register-form" action="/app/user/register.php" method="POST">
         <div class="m-3">

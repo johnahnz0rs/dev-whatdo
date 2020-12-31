@@ -12,7 +12,7 @@ require './components/header.php'; // initiates the html output (starting w/ <ht
 
     <!-- section - hero -->
     <div id="hero" class="row">
-        <div class="d-flex flex-column justify-content-between full-width">
+        <div class="d-flex flex-column justify-content-between">
             <div>
                 <h1 class="font-big-john">Confidence & Self-Love don't come free.</h1>
             </div>

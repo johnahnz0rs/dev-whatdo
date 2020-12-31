@@ -1,5 +1,28 @@
 <?php
 
+// get user's vices and viceCounts
+$vices = getUsersVices( $userId );
+$viceCounts = getUsersViceCounts( $userId, $todaysDate );
+$addVices = addViceCountsAsNecessary( $userId, $vices, $viceCounts, $todaysDate );
+
+
+// echo 'vices<br>';
+// echo '<pre>';
+// var_dump($vices);
+// echo '</pre>';
+
+// echo 'viceCounts<br>';
+// echo '<pre>';
+// var_dump($viceCounts);
+// echo '</pre>';
+
+// die();
+if( $addVices ) { 
+    $headerString = 'Location: /dash/?view=vices&date=' . $todaysDate;
+    header( $headerString );
+    die();
+}
+
 ?>
 
 
@@ -42,3 +65,46 @@
     } ?>
 
 </div>
+
+
+<script type="text/javascript" defer>
+$(document).ready(function() {
+
+    // functions
+    function updateViceCount( id, count ) {
+        const updateString = '../app/vices/update-vice-count.php?id=' + id + '&user_id=' + userId + '&count=' + count + '&date=' + date;
+        window.location.href = updateString;
+    }
+
+    // increment viceCount
+    $( '.vice-increment' ).on( 'click', function() {
+        const viceCountId = $( this ).data( 'id' );
+        let viceCountCount = $( this ).data( 'count' );
+        viceCountCount = parseInt(viceCountCount);
+        viceCountCount++;
+        updateViceCount( viceCountId, viceCountCount );
+    } );
+
+    // decrement viceCount
+    $( '.vice-decrement' ).on( 'click', function() {
+        const viceCountId = $( this ).data( 'id' );
+        let viceCountCount = $( this ).data( 'count' );
+        viceCountCount = parseInt(viceCountCount);
+        viceCountCount = viceCountCount - 1;
+        updateViceCount( viceCountId, viceCountCount );
+    } );
+
+    // toggle viceNote
+    $( '.toggle-vice-note' ).on( 'click', function() {
+        const viceNoteToBeToggled = '#vicenote-' + $( this ).data( 'id' );
+        $( viceNoteToBeToggled ).toggle();
+    } );
+
+    // toggle add-viceUserNote
+    $( '.toggle-add-vice-user-note' ).on( 'click', function() {
+        const viceUserNoteToBeToggled = '#add-detail-vice-' + $( this ).data( 'id');
+        $( viceUserNoteToBeToggled ).toggle();
+    } );
+
+});
+</script>

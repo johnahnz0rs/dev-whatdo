@@ -210,12 +210,10 @@ body {
     body #page-dash #whatdo #suggestion-whatdo #suggested-whatdo {
       font-weight: bold;
       font-size: 1.4em; }
-  body #page-dash #whatdo ul {
-    list-style-type: none; }
-    body #page-dash #whatdo ul li i {
-      margin-right: 8px; }
-    body #page-dash #whatdo ul li .badge {
-      margin-left: 12px; }
+  body #page-dash #whatdo ul li i {
+    margin-right: 8px; }
+  body #page-dash #whatdo ul li .badge {
+    margin-left: 12px; }
   body #page-account #reminders, body #page-account #program, body #page-account #vices, body #page-account #whatdo {
     min-height: 90vh;
     padding: 36px 12px; }
@@ -245,6 +243,17 @@ body {
     font-style: italic;
     font-weight: bold;
     font-size: .9em; }
+  body #page-account #wins #toggle-inactive-wins, body #page-account #wins #toggle-create-win {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: .9em;
+    color: red; }
+  body #page-account #food {
+    padding: 36px 12px; }
+    body #page-account #food p {
+      margin: 24px 0; }
+    body #page-account #food ul {
+      margin-bottom: 3rem; }
   body #stackin-footer-nav {
     padding: 24px;
     color: white; }

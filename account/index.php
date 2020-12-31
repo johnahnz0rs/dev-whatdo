@@ -15,17 +15,11 @@ if ( !$userId or !$username or !$passHash ) {
 /* requires and vars */
 require '../app/db.php'; // just initiates the dbase connection
 require '../app/helpers.php';
+$view = isset( $_GET['view'] ) ? strtolower( $_GET['view'] ) : 'reminders';
+$date = isset( $_GET['date'] ) ? $_GET['date'] : null;
+$dates = getArrayOfDateStringsForYesterdayTodayTomorrow( $date );
+$todaysDate = $dates['today'];
 
-$remindersActive = [];
-$remindersInactive = [];
-$reminders = getAllUsersReminders( $userId );
-foreach( $reminders as $reminder ) {
-    if( $reminder['active'] ) {
-        $remindersActive[] = $reminder;
-    } else {
-        $remindersInactive[] = $reminder;
-    }
-}
 
 
 /* start HTML output */
@@ -38,91 +32,63 @@ require '../components/header.php'; // initiates the html output (starting w/ <h
     <!-- <p style="margin-top: 100px;">this is /account</p> -->
 
     <!-- reminders -->
-    <div id="reminders" class="bg-info">
-        <?php require '../components/account-reminders.php'; ?>
-    </div>
+    <?php if( $view == 'reminders' ) {
+        echo '<div id="reminders" class="bg-info">';
+            require '../components/account-reminders.php';
+        echo '</div>';
+    } ?>
 
     <!-- program -->
-    <div id="program" class="bg-secondary">
-        <h2 class="text-center">program</h2>
-    </div>
+    <?php if( $view == 'wins' ) {
+        echo '<div id="program" class="bg-light">';
+            require '../components/account-wins.php';
+            // <h2 class="text-center">Wins</h2>
+        echo '</div>';
+    } ?>
+
+    <!-- meal plan -->
+    <?php if( $view == 'food' ) {
+        echo '<div id="food" class="bg-light">';
+            require '../components/account-food.php';
+            // <h2 class="text-center">Meal Plan</h2>
+        echo '</div>';
+    } ?>
     
     <!-- vices -->
-    <div id="vices" class="bg-light">
-        <h2 class="text-center">vices</h2>
-    </div>
+    <?php if( $view == 'vices' ) {
+        echo '<div id="vices" class="bg-light">';
+            require '../components/account-vices.php';
+            // <h2 class="text-center">vices</h2>
+        echo '</div>';
+    } ?>
     
     <!-- whatDos -->
-    <div id="whatdo" class="bg-warning">
-        <h2 class="text-center">whatDo</h2>
-    </div>
+    <?php if( $view == 'whatdo' ) {
+        echo '<div id="whatdo" class="bg-warning">';
+            require '../components/account-whatdo.php';
+            // <h2 class="text-center">whatDo</h2>
+        echo '</div>';
+    } ?>
 
 </div>
 
-
-
-
-
-
-
-<script defer>
+<script type="text/javascript" defer>
 $( document ).ready( function() {
 
+    // set vars & initialize
+    const view = '<?php echo $view; ?>';
+    $( '#display-this-component' ).text( view );
     const userId = <?php echo $userId; ?>;
+    const date = '<?php echo $todaysDate; ?>';    
 
-    // edit a reminder (active only)
-    $( '.update-reminder, .cancel-update-reminder' ).on( 'click', function(e) {
-        e.preventDefault();
-        const id = $(this).data('id');
-        $( '#single-reminder-' + id ).toggle();
-        $( '#single-reminder-form-' + id ).toggle();
-        $( '#manipulate-reminder-' + id ).toggle();
-    } );
+    // Cookies.set('test_cookie', 'lolomgwtfbbq!?', { expires: 1, path: '/' });
+    // const testCookie = Cookies.get( 'test_cookie' );
+    // console.log( testCookie );
 
-    // deactivate a reminder (active only)
-    $( '.deactivate-reminder' ).on( 'click', function(e) {
-        e.preventDefault();
-        const redirectString = '../app/reminders/deactivate-a-reminder.php?id=' + $(this).data('id') + '&user_id=' + userId;
-        window.location.href = redirectString;
-    } );
-
-    // activate a reminder (inactive only)
-    $( '.activate-reminder' ).on( 'click', function(e) {
-        e.preventDefault();
-        const redirectString = '../app/reminders/activate-a-reminder.php?id=' + $(this).data('id') + '&user_id=' + userId;
-        window.location.href= redirectString;
-    } );
-
-    // delete a reminder
-    $( '.delete-reminder' ).on( 'click', function(e) {
-        e.preventDefault();
-        const redirectString = '../app/reminders/delete-a-reminder.php?id=' + $(this).data('id') + '&user_id=' + userId;
-        window.location.href = redirectString;
-    } );
-
-    // show / hide inactive reminders
-    $( '#toggle-inactive-reminders' ).on( 'click', function(e) {
-        e.preventDefault();
-        $( '#display-inactive-reminders' ).toggle();
-        $( '#create-reminder' ).hide();
-    } );
-
-    // show / hide create a new reminder
-    $( '#toggle-create-reminder' ).on( 'click', function(e) {
-        e.preventDefault();
-        $( '#create-reminder' ).toggle();
-        $( '#display-inactive-reminders' ).hide();
-    } );
-
-    // cancel create-a-new-reminder
-    $( '.cancel-create-reminder' ).on( 'click', function(e) {
-        e.preventDefault();
-        $( '#create-title, #create-note' ).val( '' );
-        $( '#create-reminder' ).hide();
-    } );
-
-} );
+});
 </script>
+
 <?php 
 
+// custom js for /account is called in the footer.
 require '../components/footer.php';
