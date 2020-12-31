@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../app/db.php'; // just initiates the dbase connection
-require '../components/header.php'; // initiates the html output (starting w/ <html>)
+require '../components/component-header.php'; // initiates the html output (starting w/ <html>)
 ?>
 
 <p style="margin-top: 100px;">this is /dash</p>
@@ -90,7 +90,7 @@ if( $user ) {
 
 
 
-require '../components/header.php';
+require '../components/component-header.php';
 
 
 ?>
@@ -192,4 +192,4 @@ function enableForm() {
 </script>
 
 
-<?php require '../components/footer.php';
+<?php require '../components/component-footer.php';

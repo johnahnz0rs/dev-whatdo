@@ -1,6 +1,6 @@
 <?php
 
-require 'recipes.php';
+require 'component-recipes.php';
 // echo '<h2 style="padding-top: 200px;">got it</h2>';
 // echo 'recipes:<br>';
 // var_dump($recipes);

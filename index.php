@@ -2,7 +2,7 @@
 session_start();
 require './app/db.php'; // just initiates the dbase connection
 require './app/helpers.php';
-require './components/header.php'; // initiates the html output (starting w/ <html>)
+require './components/component-header.php'; // initiates the html output (starting w/ <html>)
 ?>
 
 
@@ -48,7 +48,7 @@ require './components/header.php'; // initiates the html output (starting w/ <ht
     <?php if( !$user ) { ?>
         <div id="register" class="row text-light bg-dark justify-content-center">
             <div class="col-12 col-md-6 col-lg-5">
-                <?php require './components/register.php'; ?>
+                <?php require './components/component-register.php'; ?>
             </div>
         </div>
     <?php } ?>
@@ -56,4 +56,4 @@ require './components/header.php'; // initiates the html output (starting w/ <ht
 
 </div>
 
-<?php require './components/footer.php';
+<?php require './components/component-footer.php';

@@ -2,7 +2,7 @@
 session_start();
 require '../app/db.php'; // just initiates the dbase connection
 require '../app/helpers.php';
-require '../components/header.php'; // initiates the html output (starting w/ <html>)
+require '../components/component-header.php'; // initiates the html output (starting w/ <html>)
 ?>
 
 <div id="page-faq" class="container py-5">
@@ -24,4 +24,4 @@ require '../components/header.php'; // initiates the html output (starting w/ <h
 </div>
 
 
-<?php require '../components/footer.php';
+<?php require '../components/component-footer.php';

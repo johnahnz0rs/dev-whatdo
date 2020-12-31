@@ -23,7 +23,7 @@ $todaysDate = $dates['today'];
 
 
 /* start HTML output */
-require '../components/header.php'; // initiates the html output (starting w/ <html>)
+require '../components/component-header.php'; // initiates the html output (starting w/ <html>)
 
 ?>
 
@@ -91,4 +91,4 @@ $( document ).ready( function() {
 <?php 
 
 // custom js for /account is called in the footer.
-require '../components/footer.php';
+require '../components/component-footer.php';
