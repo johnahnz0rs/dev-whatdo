@@ -243,17 +243,90 @@ body {
     font-style: italic;
     font-weight: bold;
     font-size: .9em; }
-  body #page-account #wins #toggle-inactive-wins, body #page-account #wins #toggle-create-win {
+  body #page-account #program .single-program {
+    margin: 24px 0; }
+    body #page-account #program .single-program div div h3 {
+      text-decoration: underline; }
+    body #page-account #program .single-program div div p {
+      margin-bottom: 1.5em; }
+    body #page-account #program .single-program .inactive-reminder {
+      background-color: rgba(0, 0, 0, 0.3); }
+  body #page-account #program form textarea {
+    width: 100%;
+    padding: 4px 8px;
+    resize: both;
+    overflow: scroll; }
+    body #page-account #program form textarea[name="title"] {
+      font-size: 1.3em;
+      font-weight: bold; }
+    body #page-account #program form textarea[name="note"] {
+      height: 160px; }
+  body #page-account #program form select {
+    min-width: 35%;
+    padding: 4px 8px; }
+  body #page-account #program #toggle-inactive-program, body #page-account #program #toggle-create-program {
     cursor: pointer;
+    font-style: italic;
     font-weight: bold;
-    font-size: .9em;
-    color: red; }
+    font-size: .9em; }
   body #page-account #food {
     padding: 36px 12px; }
     body #page-account #food p {
       margin: 24px 0; }
     body #page-account #food ul {
       margin-bottom: 3rem; }
+  body #page-account #vices .single-vice {
+    margin: 24px 0; }
+    body #page-account #vices .single-vice div div h3 {
+      text-decoration: underline; }
+    body #page-account #vices .single-vice div div p {
+      margin-bottom: 1.5em; }
+    body #page-account #vices .single-vice .inactive-vice {
+      background-color: rgba(0, 0, 0, 0.3); }
+  body #page-account #vices form textarea {
+    width: 100%;
+    padding: 4px 8px;
+    resize: both;
+    overflow: scroll; }
+    body #page-account #vices form textarea[name="title"] {
+      font-size: 1.3em;
+      font-weight: bold; }
+    body #page-account #vices form textarea[name="note"] {
+      height: 160px; }
+  body #page-account #vices form select {
+    min-width: 35%;
+    padding: 4px 8px; }
+  body #page-account #vices #toggle-inactive-vices, body #page-account #vices #toggle-create-vice {
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    font-size: .9em; }
+  body #page-account #whatdo .single-whatdo {
+    margin: 24px 0; }
+    body #page-account #whatdo .single-whatdo div div h3 {
+      text-decoration: underline; }
+    body #page-account #whatdo .single-whatdo div div p {
+      margin-bottom: 1.5em; }
+    body #page-account #whatdo .single-whatdo .inactive-whatdo {
+      background-color: rgba(0, 0, 0, 0.3); }
+  body #page-account #whatdo form textarea {
+    width: 100%;
+    padding: 4px 8px;
+    resize: both;
+    overflow: scroll; }
+    body #page-account #whatdo form textarea[name="title"] {
+      font-size: 1.3em;
+      font-weight: bold; }
+    body #page-account #whatdo form textarea[name="note"] {
+      height: 160px; }
+  body #page-account #whatdo form select {
+    min-width: 35%;
+    padding: 4px 8px; }
+  body #page-account #whatdo #toggle-inactive-whatdos, body #page-account #whatdo #toggle-create-whatdo {
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    font-size: .9em; }
   body #stackin-footer-nav {
     padding: 24px;
     color: white; }

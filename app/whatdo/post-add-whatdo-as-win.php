@@ -12,15 +12,6 @@ if( $whatDoId == null or $userId == null or $date == null or $title == null or $
     die();
 }
 
-// echo 'this is /app/whatdo.add-whatdo-as-win.php<br>';
-// var_dump($_POST);
-// echo 'whatDoId: ' . $whatDoId . '<br>';
-// echo 'userId: ' . $userId . '<br>';
-// echo 'date: ' . $date . '<br>';
-// echo 'title: ' . $title . '<br>';
-// echo 'note: ' . $note . '<br>';
-// die();
-
 require '../db.php';
 
 $sqlStackAWhatDo = $db->prepare( "INSERT INTO wins (user_id, date, whatdo_id, title, note, user_note, stacked) VALUES (:userId, :date, :whatDoId, :title, :note, :userNote, 0)" );

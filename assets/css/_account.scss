@@ -50,12 +50,46 @@
         }
     }
 
-    #wins {
-        #toggle-inactive-wins, #toggle-create-win {
+    #program {
+        .single-program {
+            margin: 24px 0;
+            div div {
+                h3 {
+                    text-decoration: underline;
+                }
+                p {
+                    margin-bottom: 1.5em;
+                }
+            }
+            .inactive-reminder {
+                background-color: rgba( 0,0,0,.3 );
+            }
+        }
+        form {
+            textarea {
+                width: 100%;
+                padding: 4px 8px;
+                resize: both;
+                overflow: scroll;
+                &[name="title"] {
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    // height: 38px;
+                }
+                &[name="note"] {
+                    height: 160px;
+                }
+            }
+            select {
+                min-width: 35%;
+                padding: 4px 8px;
+            }
+        }
+        #toggle-inactive-program, #toggle-create-program {
             cursor: pointer;
+            font-style: italic;
             font-weight: bold;
             font-size: .9em;
-            color: red;
         }
     }
     
@@ -66,6 +100,92 @@
         };
         ul {
             margin-bottom: 3rem;
+        }
+    }
+
+    #vices {
+        .single-vice {
+            margin: 24px 0;
+            div div {
+                h3 {
+                    text-decoration: underline;
+                }
+                p {
+                    margin-bottom: 1.5em;
+                }
+            }
+            .inactive-vice {
+                background-color: rgba( 0,0,0,.3 );
+            }
+        }
+        form {
+            textarea {
+                width: 100%;
+                padding: 4px 8px;
+                resize: both;
+                overflow: scroll;
+                &[name="title"] {
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    // height: 38px;
+                }
+                &[name="note"] {
+                    height: 160px;
+                }
+            }
+            select {
+                min-width: 35%;
+                padding: 4px 8px;
+            }
+        }
+        #toggle-inactive-vices, #toggle-create-vice {
+            cursor: pointer;
+            font-style: italic;
+            font-weight: bold;
+            font-size: .9em;
+        }
+    }
+
+    #whatdo {
+        .single-whatdo {
+            margin: 24px 0;
+            div div {
+                h3 {
+                    text-decoration: underline;
+                }
+                p {
+                    margin-bottom: 1.5em;
+                }
+            }
+            .inactive-whatdo {
+                background-color: rgba( 0,0,0,.3 );
+            }
+        }
+        form {
+            textarea {
+                width: 100%;
+                padding: 4px 8px;
+                resize: both;
+                overflow: scroll;
+                &[name="title"] {
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    // height: 38px;
+                }
+                &[name="note"] {
+                    height: 160px;
+                }
+            }
+            select {
+                min-width: 35%;
+                padding: 4px 8px;
+            }
+        }
+        #toggle-inactive-whatdos, #toggle-create-whatdo {
+            cursor: pointer;
+            font-style: italic;
+            font-weight: bold;
+            font-size: .9em;
         }
     }
 

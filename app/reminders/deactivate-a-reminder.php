@@ -4,7 +4,7 @@ $id = isset( $_GET['id'] ) ? $_GET['id'] : null;
 $userId = isset( $_GET['user_id'] ) ? $_GET['user_id'] : null;
 
 if( $id == null or $userId == null ) {
-    header( 'Location: /account/?view=reminders' );
+    header( 'Location: /signout' );
 }
 
 require '../db.php';

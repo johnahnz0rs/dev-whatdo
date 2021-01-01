@@ -1,8 +1,8 @@
 <?php
 
+$reminders = getAllUsersReminders( $userId );
 $remindersActive = [];
 $remindersInactive = [];
-$reminders = getAllUsersReminders( $userId );
 foreach( $reminders as $reminder ) {
     if( $reminder['active'] ) {
         $remindersActive[] = $reminder;

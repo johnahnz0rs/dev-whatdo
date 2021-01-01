@@ -1,8 +1,8 @@
 <?php
 
 $program = getAllUsersProgram( $userId );
-$programsInactive = [];
 $programsActive = [];
+$programsInactive = [];
 foreach( $program as $win ) {
     if( $win['active'] == '1' ) {
         $programsActive[] = $win;
@@ -43,7 +43,7 @@ foreach( $program as $win ) {
         <p>
             Your Program is how you live, how you conduct yourself on a daily basis. It's your wake-up time, how you work out (do you just go through the motions, or do you EARN that PMA Positive Mental Attitude?), your nutrition; it's all the things <u><em>you</em></u> do to validate <u><em>yourself</em></u>. Each item is a Win; STACK enough Wins everyday, and you'll earn that righteous confidence and self-love. These wins will appear everyday in the Wins tab on your dashboard.
         </p>
-    <div>
+    </div>
 
     <!-- active program items -->
     <div id="active-program">
@@ -85,20 +85,21 @@ foreach( $program as $win ) {
         } ?>
     </div>
 
+    <!-- togglers -->
     <div id="togglers-program" class="text-center pt-5">
         <p><span id="toggle-inactive-program"> show / hide inactive wins </span></p>
-        <p><span id="toggle-create-program"> create a new win</span></p>
+        <p><span id="toggle-create-program"> create a new win </span></p>
     </div>
 
+    <!-- inactive program items -->
     <div id="inactive-program" style="display: none;">
-        <!-- inactive program items -->
         <?php if( $programsInactive ) {
             foreach( $programsInactive as $program ) {
                 echo '<div class="row single-program">
                     <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-light p-3 inactive-program">
                         <div id="single-program-' . $program['id'] . '">
-                            <h3></h3>
-                            <p></p>
+                            <h3>' . $program['title'] . '</h3>
+                            <p>' . $program['note'] . '</p>
                             <span class="badge rounded-pill bg-dark">Inactive</span>
                             <div id="manipulate-program-' . $program['id'] . '" class="float-end">
                                 <button data-id="' . $program['id'] . '" class="activate-program btn btn-success">Activate</button>
@@ -110,15 +111,15 @@ foreach( $program as $win ) {
             }
         } else {
             echo '<div class="row single-program">
-                <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-light p-3 inactive-reminder">
+                <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-light p-3 inactive-program">
                     <h3>No Inactive Program Items</h3>
                 </div>
             </div>';
         } ?>
     </div>
 
+    <!-- create program item -->
     <div id="create-program" style="display: none;">
-        <!-- create program item -->
         <div class="col-10 offset-1 col-md-8 offset-md-12 col-lg-6 offset-lg-3 bg-light p-3">
             <form action="../app/program/post-create-a-program.php" method="POST">
                 <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
@@ -142,6 +143,8 @@ foreach( $program as $win ) {
 
 <script type="text/javascript" defer>
 $(document).ready(function() {
+
+    // set vars
     const userId = <?php echo $userId; ?>;
     const date = '<?php echo $todaysDate; ?>'; 
     const $activateProgram = $('.activate-program');
@@ -149,17 +152,17 @@ $(document).ready(function() {
     const $deleteProgram = $('.delete-program');
     
     // show / hide inactive wins
-    $('#toggle-inactive-wins').on( 'click', function(e) {
+    $('#toggle-inactive-program').on( 'click', function(e) {
         e.preventDefault();
-        $('#inactive-wins').toggle();
-        $('#create-win').hide();
+        $('#inactive-program').toggle();
+        $('#create-program').hide();
     });
 
     // show / hide create-a-new-win/program
-    $('#toggle-create-win').on( 'click', function(e) {
+    $('#toggle-create-program').on( 'click', function(e) {
         e.preventDefault();
-        $('#create-win').toggle();
-        $('#inactive-wins').hide();
+        $('#create-program').toggle();
+        $('#inactive-program').hide();
     });
 
     // cancel creating a new program
@@ -198,6 +201,7 @@ $(document).ready(function() {
         const redirectString = '../app/program/delete-a-program.php?id=' + $(this).data('id') + '&user_id=' + userId;
         window.location.href = redirectString;
     });
+
 });
 </script>
 

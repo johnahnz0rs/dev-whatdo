@@ -4,15 +4,15 @@ $id = isset( $_GET['id'] ) ? $_GET['id'] : null;
 $userId = isset( $_GET['user_id'] ) ? $_GET['user_id'] : null;
 
 if( $id == null or $userId == null ) {
-    header( 'Location: /account/?view=reminders' );
+    header( 'Location: /signout' );
 }
 
 require '../db.php';
 
-$sqlDeactivateReminder = $db->prepare( "UPDATE reminders SET active = 1 WHERE id = :id AND user_id = :userId" );
+$sqlActivateReminder = $db->prepare( "UPDATE reminders SET active = 1 WHERE id = :id AND user_id = :userId" );
 
 try {
-    $sqlDeactivateReminder->execute( [
+    $sqlActivateReminder->execute( [
         'id' => $id,
         'userId' => $userId
     ] );

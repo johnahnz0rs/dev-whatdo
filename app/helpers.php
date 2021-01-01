@@ -43,8 +43,8 @@ function getAllUsersReminders( $userId ) {
         echo $output;
         die();
     }
-    $reminders = $sqlAllReminders->rowCount() ? $sqlAllReminders->fetchAll( PDO::FETCH_ASSOC ) : null;
-    return $reminders;
+    $allReminders = $sqlAllReminders->rowCount() ? $sqlAllReminders->fetchAll( PDO::FETCH_ASSOC ) : null;
+    return $allReminders;
 }
 
 // get user's program (what should all be done everyday)
@@ -67,9 +67,9 @@ function getUsersProgram( $userId ) {
 // get ALL of a user's programs (including the inactive ones)
 function getAllUsersProgram( $userId ) {
     global $db;
-    $sqlProgram = $db->prepare( "SELECT id, title, note, active FROM programs WHERE user_id = :userId" );
+    $sqlAllProgram = $db->prepare( "SELECT id, title, note, active FROM programs WHERE user_id = :userId" );
     try {
-        $sqlProgram->execute( [
+        $sqlAllProgram->execute( [
             'userId' => $userId
         ] );
     } catch( PDOException $e ) {
@@ -77,8 +77,8 @@ function getAllUsersProgram( $userId ) {
         echo $output;
         die();
     }
-    $program = $sqlProgram->rowCount() ? $sqlProgram->fetchAll( PDO::FETCH_ASSOC ) : null;
-    return $program;
+    $allProgram = $sqlAllProgram->rowCount() ? $sqlProgram->fetchAll( PDO::FETCH_ASSOC ) : null;
+    return $allProgram;
 }
 
 // get user's wins for $date
@@ -155,6 +155,23 @@ function getUsersVices( $userId ) {
     return $vices;
 }
 
+function getAllUsersVices( $userId ) {
+    global $db;
+    // echo 'starting getAllUsersVices';
+    $sqlAllVices = $db-> prepare( "SELECT id, title, note, active, created_at FROM vices WHERE user_id = :userId" );
+    try {
+        $sqlAllVices->execute( [
+            'userId' => $userId
+        ] );
+    } catch( PDOException $e ) {
+        $output = $e->getMessages();
+        echo $output;
+        die();
+    }
+    $allVices = $sqlAllVices->rowCount() ? $sqlAllVices->fetchAll( PDO::FETCH_ASSOC ) : null;
+    return $allVices;
+}
+
 // get user's viceCounts for $date (array of viceCounts)
 function getUsersViceCounts( $userId, $date ) {
     global $db;
@@ -227,6 +244,23 @@ function getUsersWhatDos( $userId ) {
     }
     $whatDos = $sqlWhatDos->rowCount() ? $sqlWhatDos->fetchAll( PDO::FETCH_ASSOC ) : null;
     return $whatDos;
+}
+
+// get all of a user's whatdos (including inactive whatdos)
+function getAllUsersWhatDos( $userId ) {
+    global $db;
+    $sqlAllWhatDos = $db->prepare( "SELECT id, title, note, active, created_at FROM whatdos WHERE user_id = :userId" );
+    try {
+        $sqlAllWhatDos->execute( [
+            'userId' => $userId
+        ] );
+    } catch( PDOException $e ) {
+        $output = $e->getMessage();
+        echo $output;
+        die();
+    }
+    $allWhatDos = $sqlAllWhatDos->rowCount() ? $sqlAllWhatDos->fetchAll( PDO::FETCH_ASSOC ) : null;
+    return $allWhatDos;
 }
 
 // get an array of id's of whatdos that are marked as STACKED wins

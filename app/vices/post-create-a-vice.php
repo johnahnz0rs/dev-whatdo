@@ -10,10 +10,10 @@ if( $userId == null or $title == null or $note == null ) {
 
 require '../db.php';
 
-$sqlCreateWhatDo = $db->prepare( "INSERT INTO whatdos (user_id, title, note, active) VALUES (:userId, :title, :note, 1)" );
+$sqlCreateVice = $db->prepare( "INSERT INTO vices (user_id, title, note, active) VALUES (:userId, :title, :note, 1)" );
 
 try {
-    $sqlCreateWhatDo->execute( [
+    $sqlCreateVice->execute( [
         'userId' => $userId,
         'title' => $title,
         'note' => $note
@@ -24,5 +24,5 @@ try {
     die();
 }
 
-header( 'Location: /account/?view=whatdo' );
+header( 'Location: /account/?view=vices' );
 die();

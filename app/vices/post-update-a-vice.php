@@ -13,10 +13,10 @@ if( $userId == null or $title == null or $note == null or $active == null ) {
 $active = $active == 'active' ? 1 : 0;
 
 require '../db.php';
-$sqlUpdateReminder = $db->prepare( "UPDATE reminders SET title = :title, note = :note, active = :active WHERE id = :id and user_id = :userId" );
+$sqlUpdateVice = $db->prepare( "UPDATE vices SET title = :title, note = :note, active = :active WHERE id = :id and user_id = :userId" );
 
 try {
-    $sqlUpdateReminder->execute( [
+    $sqlUpdateVice->execute( [
         'title' => $title,
         'note' => $note,
         'active' => $active,
@@ -29,6 +29,6 @@ try {
 }
 
 
-$headerString = 'Location: /account/?view=reminders';
+$headerString = 'Location: /account/?view=vices';
 header( $headerString );
 die();

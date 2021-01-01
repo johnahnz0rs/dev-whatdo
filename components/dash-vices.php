@@ -49,7 +49,7 @@ if( $addVices ) {
                         </div>
                         <span class="toggle-add-vice-user-note badge rounded-pill bg-secondary text-light" data-id="' . $vice['id'] . '">add a note</span>
                         <div id="add-detail-vice-' . $vice['id'] . '" class="w-100" style="display: none;">
-                            <form action="../app/vices/post-update-vice-usernote.php" method="POST">
+                            <form action="../app/vices/post-update-vice-count-usernote.php" method="POST">
                                 <input name="user_id" type="hidden" value="' . $userId . '">
                                 <input name="id" type="hidden" value="' . $vice['id'] . '">
                                 <input name="date" type="hidden" value="' . $dates['today'] . '">
@@ -72,7 +72,7 @@ $(document).ready(function() {
 
     // functions
     function updateViceCount( id, count ) {
-        const updateString = '../app/vices/update-vice-count.php?id=' + id + '&user_id=' + userId + '&count=' + count + '&date=' + date;
+        const updateString = '../app/vices/update-vice-count-count.php?id=' + id + '&user_id=' + userId + '&count=' + count + '&date=' + date;
         window.location.href = updateString;
     }
 
