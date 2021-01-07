@@ -1,17 +1,19 @@
 <?php
 
-$program = getAllUsersProgram( $userId );
+$allPrograms = getAllUsersProgram( $userId );
 $programsActive = [];
 $programsInactive = [];
-foreach( $program as $win ) {
+foreach( $allPrograms as $win ) {
     if( $win['active'] == '1' ) {
         $programsActive[] = $win;
     } else {
         $programsInactive[] = $in;
     }
 }
-// if( $program ) {
-//     foreach( $program as $win ) {
+
+// echo '<div style="margin-top: 300px;">ummmmm user id is'. $userId;
+// if( $allPrograms ) {
+//     foreach( $allPrograms as $win ) {
 //         echo '<pre>';
 //         var_dump($win);
 //         echo '</pre>';

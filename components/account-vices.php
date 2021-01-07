@@ -99,7 +99,7 @@ foreach( $vices as $vice ) {
 
     <!-- create new vice -->
     <div id="create-vice" style="display: none;">
-        <div class="col-10 offset-1 col-md-8 offset-md-12 col-lg-6 offset-lg-3 bg-light p-3">
+        <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-light p-3">
             <form action="../app/vices/post-create-a-vice.php" method="POST">
                 <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
                 <input type="hidden" name="page" value="account">

@@ -67,9 +67,9 @@ function getUsersProgram( $userId ) {
 // get ALL of a user's programs (including the inactive ones)
 function getAllUsersProgram( $userId ) {
     global $db;
-    $sqlAllProgram = $db->prepare( "SELECT id, title, note, active FROM programs WHERE user_id = :userId" );
+    $sqlAllPrograms = $db->prepare( "SELECT id, title, note, active FROM programs WHERE user_id = :userId" );
     try {
-        $sqlAllProgram->execute( [
+        $sqlAllPrograms->execute( [
             'userId' => $userId
         ] );
     } catch( PDOException $e ) {
@@ -77,8 +77,11 @@ function getAllUsersProgram( $userId ) {
         echo $output;
         die();
     }
-    $allProgram = $sqlAllProgram->rowCount() ? $sqlProgram->fetchAll( PDO::FETCH_ASSOC ) : null;
-    return $allProgram;
+    $allPrograms = $sqlAllPrograms->rowCount() ? $sqlAllPrograms->fetchAll( PDO::FETCH_ASSOC ) : null;
+    // echo '<div style"margin-top: 300px;">lol wtf<br>';
+    // var_dump($allProgram);
+    // die();
+    return $allPrograms;
 }
 
 // get user's wins for $date

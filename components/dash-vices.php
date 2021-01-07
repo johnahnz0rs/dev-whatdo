@@ -70,9 +70,13 @@ if( $addVices ) {
 <script type="text/javascript" defer>
 $(document).ready(function() {
 
+    // set vars
+    const userId = <?php echo $userId; ?>;
+    const todaysDate = '<?php echo strval( $dates['today'] ); ?>';
+
     // functions
     function updateViceCount( id, count ) {
-        const updateString = '../app/vices/update-vice-count-count.php?id=' + id + '&user_id=' + userId + '&count=' + count + '&date=' + date;
+        const updateString = '../app/vices/update-vice-count-count.php?id=' + id + '&user_id=' + userId + '&count=' + count + '&date=' + todaysDate;
         window.location.href = updateString;
     }
 

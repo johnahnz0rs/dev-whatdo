@@ -5,12 +5,21 @@ $whatDosActive = [];
 $whatDosInactive = [];
 
 foreach( $whatDos as $whatDo ) {
-    if( $whatDos['active'] == 1 ) {
+    if( $whatDo['active'] == '1' ) {
         $whatDosActive[] = $whatDo;
     } else {
         $whatDosInactive[] = $whatDo;
     }
 }
+
+// if($whatDos) {
+//     foreach($whatDos as $whatDo) {
+//         echo '<pre>';
+//         var_dump($whatDo);
+//         echo '</pre>';
+//     }
+// }
+// die();
 
 ?>
 
@@ -29,7 +38,7 @@ foreach( $whatDos as $whatDo ) {
         <?php if( $whatDosActive ) {
             foreach( $whatDosActive as $whatDo ) {
                 echo '<div class="row single-whatdo">
-                    <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-warning p-3">
+                    <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-light p-3">
                         <div id="single-whatdo-' . $whatDo['id'] . '">
                             <h3>' . $whatDo['title'] . '</h3>
                             <p>' . $whatDo['note'] . '</p>
@@ -99,7 +108,7 @@ foreach( $whatDos as $whatDo ) {
 
     <!-- create new whatDo -->
     <div id="create-whatdo" style="display: none;">
-        <div class="col-10 offset-1 col-md-8 offset-md-12 col-lg-6 offset-lg-3 bg-light p-3">
+        <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 bg-light p-3">
             <form action="../app/whatdo/post-create-a-whatdo.php" method="POST">
                 <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
                 <input type="hidden" name="page" value="account">
